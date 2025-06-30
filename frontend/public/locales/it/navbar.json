@@ -1,6 +1,12 @@
 {
+  "close": "Chiudi",
   "home": "Home",
+  "language": {
+    "en": "Inglese",
+    "it": "Italiano"
+  },
   "login": "Accedi",
+  "openSidebar": "Apri barra laterale",
   "recipes": "Ricette",
   "recipeTypes": {
     "all": "Tutte le Ricette",
@@ -9,5 +15,7 @@
     "mainCourses": "Secondi Piatti",
     "desserts": "Dolci"
   },
-  "search": "Cerca"
+  "search": "Cerca",
+  "switchLanguageTo": "Passa alla lingua {{lang}}",
+  "toggleLanguage": "Cambia lingua"
 }

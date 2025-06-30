@@ -1,6 +1,12 @@
 {
+  "close": "Close",
   "home": "Home",
+  "language": {
+    "en": "English",
+    "it": "Italian"
+  },
   "login": "Sign In",
+  "openSidebar": "Open sidebar",
   "recipes": "Recipes",
   "recipeTypes": {
     "all": "All Recipes",
@@ -9,5 +15,7 @@
     "mainCourses": "Main Courses",
     "desserts": "Desserts"
   },
-  "search": "Search"
+  "search": "Search",
+  "switchLanguageTo": "Switch language to {{lang}}",
+  "toggleLanguage": "Toggle language"
 }

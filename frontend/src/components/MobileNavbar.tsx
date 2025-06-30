@@ -25,8 +25,13 @@ export default function MobileNavbar() {
       <nav className="navbar fixed-top navbar-dark bg-dark shadow-lg p-2">
         <div className="container-fluid">
           {/* Logo */}
-          <NavLink className="navbar-brand" to="/">
-            <i className="bi bi-book"></i>
+          <NavLink
+            className="navbar-brand"
+            to="/"
+            aria-label={t("home")}
+            title={t("home")}
+          >
+            <i className="bi bi-book" aria-hidden="true"></i>
           </NavLink>
 
           {/* Search bar */}
@@ -43,8 +48,13 @@ export default function MobileNavbar() {
               aria-label={t("search")}
               style={{ minWidth: 0 }}
             />
-            <button className="btn btn-outline-light" type="submit">
-              <i className="bi bi-search"></i>
+            <button
+              className="btn btn-outline-light"
+              type="submit"
+              aria-label={t("search")}
+              title={t("search")}
+            >
+              <i className="bi bi-search" aria-hidden="true"></i>
             </button>
           </form>
 
@@ -55,6 +65,8 @@ export default function MobileNavbar() {
             data-bs-toggle="offcanvas"
             data-bs-target="#mobileMenu"
             aria-controls="mobileMenu"
+            aria-label={t("openSidebar")}
+            title={t("openSidebar")}
           >
             <span className="navbar-toggler-icon"></span>
           </button>
@@ -70,16 +82,22 @@ export default function MobileNavbar() {
       >
         {/* Logo + Name */}
         <div className="offcanvas-header">
-          <NavLink className="navbar-brand d-flex align-items-center" to="/">
+          <NavLink
+            className="navbar-brand d-flex align-items-center"
+            to="/"
+            aria-label={t("home")}
+            title={t("home")}
+          >
             <h5 className="offcanvas-title" id="mobileMenuLabel">
-              <i className="bi bi-book"></i> Recipes
+              <i className="bi bi-book" aria-hidden="true"></i> Recipes
             </h5>
           </NavLink>
           <button
             type="button"
             className="btn-close btn-close-white"
             data-bs-dismiss="offcanvas"
-            aria-label="Close"
+            aria-label={t("close")}
+            title={t("close")}
           ></button>
         </div>
 
@@ -91,6 +109,10 @@ export default function MobileNavbar() {
                 className="nav-link btn btn-link text-white"
                 id="recipesDropdownMobile"
                 role="button"
+                aria-haspopup="true"
+                aria-expanded={isDropdownOpen}
+                aria-label={t("recipes")}
+                title={t("recipes")}
                 onClick={() => setIsDropdownOpen(!isDropdownOpen)}
               >
                 {t("recipes")}
@@ -102,6 +124,7 @@ export default function MobileNavbar() {
                     display: "inline-block",
                     transition: "transform 0.3s ease",
                   }}
+                  aria-hidden="true"
                 ></i>
               </button>
 
@@ -117,6 +140,8 @@ export default function MobileNavbar() {
                       className="dropdown-item"
                       to={`/recipes/${type}`}
                       onClick={() => setIsDropdownOpen(false)}
+                      aria-label={t(`recipeTypes.${type}`)}
+                      title={t(`recipeTypes.${type}`)}
                     >
                       {t(`recipeTypes.${type}`)}
                     </NavLink>
@@ -139,8 +164,13 @@ export default function MobileNavbar() {
               aria-label={t("search")}
               style={{ minWidth: 0 }}
             />
-            <button className="btn btn-outline-light" type="submit">
-              <i className="bi bi-search"></i>
+            <button
+              className="btn btn-outline-light"
+              type="submit"
+              aria-label={t("search")}
+              title={t("search")}
+            >
+              <i className="bi bi-search" aria-hidden="true"></i>
             </button>
           </form>
 
@@ -149,14 +179,20 @@ export default function MobileNavbar() {
             <button
               onClick={toggleLanguage}
               className="btn btn-outline-light"
-              aria-label="Toggle language"
-              title={`Switch language to ${
-                currentLang === "en" ? "Italian" : "English"
-              }`}
+              aria-label={t("toggleLanguage")}
+              title={t("switchLanguageTo", {
+                lang: t(`language.${currentLang === "en" ? "it" : "en"}`),
+              })}
             >
               {currentLang === "en" ? "🇺🇸" : "🇮🇹"}
             </button>
-            <button className="btn btn-outline-light">{t("login")}</button>
+            <button
+              className="btn btn-outline-light"
+              aria-label={t("login")}
+              title={t("login")}
+            >
+              {t("login")}
+            </button>
           </div>
         </div>
       </div>

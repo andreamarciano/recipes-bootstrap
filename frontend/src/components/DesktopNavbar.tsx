@@ -24,8 +24,13 @@ export default function DesktopNavbar() {
       <nav className="navbar navbar-expand-lg fixed-top navbar-dark bg-dark shadow-lg p-2">
         <div className="container-fluid">
           {/* Logo + Name */}
-          <NavLink className="navbar-brand d-flex align-items-center" to="/">
-            <i className="bi bi-book"></i>
+          <NavLink
+            className="navbar-brand d-flex align-items-center"
+            to="/"
+            aria-label={t("home")}
+            title={t("home")}
+          >
+            <i className="bi bi-book" aria-hidden="true"></i>
             <span className="ms-2 d-none d-lg-inline">Recipes</span>
           </NavLink>
 
@@ -38,6 +43,10 @@ export default function DesktopNavbar() {
                   className="nav-link btn btn-link"
                   id="recipesDropdown"
                   role="button"
+                  aria-haspopup="true"
+                  aria-expanded={isDropdownOpen}
+                  aria-label={t("recipes")}
+                  title={t("recipes")}
                   onClick={() => setIsDropdownOpen(!isDropdownOpen)}
                 >
                   {t("recipes")}
@@ -49,6 +58,7 @@ export default function DesktopNavbar() {
                       display: "inline-block",
                       transition: "transform 0.3s ease",
                     }}
+                    aria-hidden="true"
                   ></i>
                 </button>
 
@@ -62,6 +72,8 @@ export default function DesktopNavbar() {
                         className="dropdown-item"
                         to={`/recipes/${type}`}
                         onClick={() => setIsDropdownOpen(false)}
+                        aria-label={t(`recipeTypes.${type}`)}
+                        title={t(`recipeTypes.${type}`)}
                       >
                         {t(`recipeTypes.${type}`)}
                       </NavLink>
@@ -85,7 +97,12 @@ export default function DesktopNavbar() {
                 aria-label={t("search")}
                 style={{ minWidth: 0 }}
               />
-              <button className="btn btn-outline-light" type="submit">
+              <button
+                className="btn btn-outline-light"
+                type="submit"
+                aria-label={t("search")}
+                title={t("search")}
+              >
                 <i className="bi bi-search"></i>
               </button>
             </form>
@@ -95,14 +112,20 @@ export default function DesktopNavbar() {
               <button
                 onClick={toggleLanguage}
                 className="btn btn-outline-light"
-                aria-label="Toggle language"
-                title={`Switch language to ${
-                  currentLang === "en" ? "Italian" : "English"
-                }`}
+                aria-label={t("toggleLanguage")}
+                title={t("switchLanguageTo", {
+                  lang: t(`language.${currentLang === "en" ? "it" : "en"}`),
+                })}
               >
                 {currentLang === "en" ? "🇺🇸" : "🇮🇹"}
               </button>
-              <button className="btn btn-outline-light">{t("login")}</button>
+              <button
+                className="btn btn-outline-light"
+                aria-label={t("login")}
+                title={t("login")}
+              >
+                {t("login")}
+              </button>
             </div>
           </div>
         </div>
