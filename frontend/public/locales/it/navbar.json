@@ -1,0 +1,13 @@
+{
+  "home": "Home",
+  "login": "Accedi",
+  "recipes": "Ricette",
+  "recipeTypes": {
+    "all": "Tutte le Ricette",
+    "appetizers": "Antipasti",
+    "firstCourses": "Primi Piatti",
+    "mainCourses": "Secondi Piatti",
+    "desserts": "Dolci"
+  },
+  "search": "Cerca"
+}

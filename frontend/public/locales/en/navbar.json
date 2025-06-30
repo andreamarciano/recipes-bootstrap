@@ -1,0 +1,13 @@
+{
+  "home": "Home",
+  "login": "Sign In",
+  "recipes": "Recipes",
+  "recipeTypes": {
+    "all": "All Recipes",
+    "appetizers": "Appetizers",
+    "firstCourses": "First Courses",
+    "mainCourses": "Main Courses",
+    "desserts": "Desserts"
+  },
+  "search": "Search"
+}

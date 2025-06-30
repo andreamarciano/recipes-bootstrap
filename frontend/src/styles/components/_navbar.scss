@@ -1,0 +1,19 @@
+.dropdown-item:focus {
+  background-color: transparent !important;
+}
+
+.dropdown-item.active {
+  background-color: transparent !important;
+  color: rgb(255, 213, 0);
+}
+
+.dropdown-item:hover {
+  text-decoration: underline;
+}
+
+.rotate-180 {
+  transform: rotate(-180deg);
+}
+.transition-transform {
+  transition: transform 0.3s ease;
+}
