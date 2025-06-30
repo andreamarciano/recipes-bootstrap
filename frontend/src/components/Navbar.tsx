@@ -12,7 +12,8 @@ function Navbar() {
     "desserts",
   ];
 
-  const [isOpen, setIsOpen] = useState(false);
+  const [isCollapseOpen, setIsCollapseOpen] = useState(false);
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
   const currentLang = i18n.language;
   const toggleLanguage = () => {
@@ -28,12 +29,21 @@ function Navbar() {
       <div className="container-fluid position-relative">
         {/* Logo */}
         <NavLink className="navbar-brand" to="/">
-          Recipes Project
+          <i className="bi bi-book"></i> Recipes
         </NavLink>
+
+        {/* Navbar Toggler */}
+        <button
+          className="navbar-toggler"
+          type="button"
+          onClick={() => setIsCollapseOpen(!isCollapseOpen)}
+        >
+          <span className="navbar-toggler-icon"></span>
+        </button>
 
         {/* Navbar content */}
         <div
-          className={`collapse navbar-collapse ${isOpen ? "show" : ""}`}
+          className={`collapse navbar-collapse ${isCollapseOpen ? "show" : ""}`}
           style={{
             display: "flex",
             justifyContent: "space-between",
@@ -47,12 +57,12 @@ function Navbar() {
                 className="nav-link btn btn-link"
                 id="recipesDropdown"
                 role="button"
-                onClick={() => setIsOpen(!isOpen)}
+                onClick={() => setIsDropdownOpen(!isDropdownOpen)}
               >
                 {t("recipes")}
                 <i
                   className={`bi bi-chevron-down ms-1 transition-transform ${
-                    isOpen ? "rotate-180" : ""
+                    isDropdownOpen ? "rotate-180" : ""
                   }`}
                   style={{
                     display: "inline-block",
@@ -62,7 +72,7 @@ function Navbar() {
               </button>
 
               <ul
-                className={`dropdown-menu ${isOpen ? "show" : ""}`}
+                className={`dropdown-menu ${isDropdownOpen ? "show" : ""}`}
                 aria-labelledby="recipesDropdown"
               >
                 {recipeTypes.map((type) => (
@@ -70,7 +80,7 @@ function Navbar() {
                     <NavLink
                       className="dropdown-item"
                       to={`/recipes/${type}`}
-                      onClick={() => setIsOpen(false)}
+                      onClick={() => setIsDropdownOpen(false)}
                     >
                       {t(`recipeTypes.${type}`)}
                     </NavLink>
