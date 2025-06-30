@@ -11,6 +11,7 @@ import "bootstrap-icons/font/bootstrap-icons.css";
 import App from "./App.tsx";
 import Home from "./pages/Home.tsx";
 import Recipes from "./pages/Recipes.tsx";
+import RecipePage from "./pages/recipes/_RecipePage.tsx";
 import NotFound from "./pages/NotFound.tsx";
 
 const router = createBrowserRouter([
@@ -20,6 +21,7 @@ const router = createBrowserRouter([
     children: [
       { index: true, element: <Home /> },
       { path: "recipes/all", element: <Recipes /> },
+      { path: "recipes/:slug", element: <RecipePage /> },
       { path: "*", element: <NotFound /> },
     ],
   },

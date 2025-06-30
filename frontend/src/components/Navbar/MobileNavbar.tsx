@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
 export default function MobileNavbar() {
-  const { t, i18n } = useTranslation("navbar");
+  const { t, i18n } = useTranslation("components/navbar");
   const recipeTypes = [
     "all",
     "appetizers",
@@ -111,8 +111,6 @@ export default function MobileNavbar() {
                 role="button"
                 aria-haspopup="true"
                 aria-expanded={isDropdownOpen}
-                aria-label={t("recipes")}
-                title={t("recipes")}
                 onClick={() => setIsDropdownOpen(!isDropdownOpen)}
               >
                 {t("recipes")}
@@ -140,8 +138,6 @@ export default function MobileNavbar() {
                       className="dropdown-item"
                       to={`/recipes/${type}`}
                       onClick={() => setIsDropdownOpen(false)}
-                      aria-label={t(`recipeTypes.${type}`)}
-                      title={t(`recipeTypes.${type}`)}
                     >
                       {t(`recipeTypes.${type}`)}
                     </NavLink>
@@ -186,13 +182,7 @@ export default function MobileNavbar() {
             >
               {currentLang === "en" ? "🇺🇸" : "🇮🇹"}
             </button>
-            <button
-              className="btn btn-outline-light"
-              aria-label={t("login")}
-              title={t("login")}
-            >
-              {t("login")}
-            </button>
+            <button className="btn btn-outline-light">{t("login")}</button>
           </div>
         </div>
       </div>
