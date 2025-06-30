@@ -4,7 +4,7 @@ import { useTranslation } from "react-i18next";
 import TomatoSauce from "./TomatoSauce";
 
 const recipesMap: Record<string, React.ReactNode> = {
-  "tomatoSauce": <TomatoSauce />,
+  tomatoSauce: <TomatoSauce />,
 };
 
 export default function RecipePage() {
