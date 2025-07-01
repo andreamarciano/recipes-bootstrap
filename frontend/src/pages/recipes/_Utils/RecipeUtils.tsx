@@ -27,7 +27,7 @@ export function IngredientsList({
               className="list-group-item d-flex justify-content-between align-items-start"
             >
               <div className="d-flex flex-column gap-2 text-start">
-                <strong>{name}</strong>
+                <strong dangerouslySetInnerHTML={{ __html: name }} />
                 {note && (
                   <div className="small text-muted fst-italic">{note}</div>
                 )}
@@ -51,7 +51,7 @@ export function ProcedureSteps({ steps }: { steps: Step[] }) {
       <ol className="mb-4">
         {steps.map(({ description, note }, i) => (
           <li key={i} className="mb-3">
-            {description}
+            <span dangerouslySetInnerHTML={{ __html: description }} />
             {note && (
               <div className="small text-muted fst-italic mt-1">{note}</div>
             )}

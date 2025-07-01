@@ -9,27 +9,48 @@ export function useRecipeTranslation(
 ) {
   const { t } = useTranslation(namespace);
 
+  const footnoteIndexMap = footnoteKeys.reduce<Record<string, number>>(
+    (acc, key, index) => {
+      acc[key] = index + 1;
+      return acc;
+    },
+    {}
+  );
+
   const ingredients: Ingredient[] = ingredientKeys.map((key) => {
     const data = t(`ingredients.${key}`, {
       returnObjects: true,
     }) as Partial<Ingredient>;
 
-    if (typeof data === "string") {
-      return { name: data };
-    }
+    const name = typeof data === "string" ? data : data.name ?? "";
+    const quantity = typeof data !== "string" ? data.quantity : undefined;
+    const note = typeof data !== "string" ? data.note : undefined;
+
+    // Sostituisci placeholder con indice della nota
+    const nameWithFootnote = name.replace(
+      /<sup>\{\{footnote:(\w+)\}\}<\/sup>/g,
+      (_, footnoteKey) => `<sup>${footnoteIndexMap[footnoteKey]}</sup>`
+    );
 
     return {
-      name: data.name ?? "",
-      quantity: data.quantity,
-      note: data.note,
+      name: nameWithFootnote,
+      quantity,
+      note,
     };
   });
 
-  const steps: Step[] = stepKeys.map((key) => ({
-    description: t(`procedure.${key}`),
-  }));
+  const steps: Step[] = stepKeys.map((key) => {
+    const raw = t(`procedure.${key}`);
+    const description = raw.replace(
+      /<sup>\{\{footnote:(\w+)\}\}<\/sup>/g,
+      (_, footnoteKey) => `<sup>${footnoteIndexMap[footnoteKey]}</sup>`
+    );
+    return { description };
+  });
 
-  const footnotes: string[] = footnoteKeys.map((key) => t(`footnotes.${key}`));
+  const footnotes: string[] = footnoteKeys.map((key, i) => {
+    return `${i + 1}. ${t(`footnotes.${key}`)}`;
+  });
 
   const title = t("title");
 
