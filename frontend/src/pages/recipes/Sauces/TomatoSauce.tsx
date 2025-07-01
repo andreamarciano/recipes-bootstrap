@@ -2,7 +2,8 @@ import {
   RecipeTitle,
   IngredientsList,
   ProcedureSteps,
-  RecipeNotes,
+  RecipeFootnotes,
+  SectionWrapper,
 } from "../_Utils/RecipeUtils";
 import { useRecipeTranslation } from "../_Utils/useRecipeTranslation";
 
@@ -24,15 +25,21 @@ export default function TomatoSauce() {
   );
 
   return (
-    <article className="my-5">
+    <article className="mx-auto px-3 my-4" style={{ maxWidth: 750 }}>
       <RecipeTitle>{title}</RecipeTitle>
-      <IngredientsList ingredients={ingredients} />
-      <ProcedureSteps steps={steps} />
-      <RecipeNotes>
-        {footnotes.map((note, i) => (
-          <div key={i} dangerouslySetInnerHTML={{ __html: note }} />
-        ))}
-      </RecipeNotes>
+      <SectionWrapper>
+        <IngredientsList ingredients={ingredients} />
+      </SectionWrapper>
+      <SectionWrapper>
+        <ProcedureSteps steps={steps} />
+      </SectionWrapper>
+      <SectionWrapper>
+        <RecipeFootnotes>
+          {footnotes.map((note, i) => (
+            <div key={i} dangerouslySetInnerHTML={{ __html: note }} />
+          ))}
+        </RecipeFootnotes>
+      </SectionWrapper>
     </article>
   );
 }

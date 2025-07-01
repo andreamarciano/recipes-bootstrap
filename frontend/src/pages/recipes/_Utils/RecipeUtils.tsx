@@ -18,7 +18,7 @@ export function IngredientsList({
 
   return (
     <>
-      <h2>{t("ingredients")}</h2>
+      <h2 className="custom-h2-recipe">{t("ingredients")}</h2>
       <div className="mx-auto" style={{ maxWidth: "600px" }}>
         <ul className="list-group mb-4">
           {ingredients.map(({ name, quantity, note }, i) => (
@@ -47,7 +47,7 @@ export function ProcedureSteps({ steps }: { steps: Step[] }) {
 
   return (
     <>
-      <h2 className="mb-4">{t("procedure")}</h2>
+      <h2 className="custom-h2-recipe">{t("procedure")}</h2>
       <div className="mx-auto" style={{ maxWidth: "700px" }}>
         <ol className="mb-4 list-group list-group-numbered custom-numbered-list">
           {steps.map(({ description, note }, i) => (
@@ -67,16 +67,25 @@ export function ProcedureSteps({ steps }: { steps: Step[] }) {
   );
 }
 
-// Notes
-export function RecipeNotes({ children }: { children: React.ReactNode }) {
+// Footnotes
+export function RecipeFootnotes({ children }: { children: React.ReactNode }) {
   const { t } = useTranslation(transPath);
 
   return (
     <>
-      <h2 className="mb-4">{t("notes")}</h2>
+      <h2 className="custom-h2-recipe">{t("notes")}</h2>
       <div className="alert alert-info mx-auto" style={{ maxWidth: "500px" }}>
         {children}
       </div>
     </>
+  );
+}
+
+// Section Wrapper
+export function SectionWrapper({ children }: { children: React.ReactNode }) {
+  return (
+    <section className="my-5 py-4 border-top border-secondary-subtle">
+      {children}
+    </section>
   );
 }
