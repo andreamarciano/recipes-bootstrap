@@ -1,22 +1,10 @@
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
-import { useTranslation } from "react-i18next";
+
+import useNavbar from "./useNavbar";
 
 export default function DesktopNavbar() {
-  const { t, i18n } = useTranslation("components/navbar");
-  const recipeTypes = [
-    "all",
-    "appetizers",
-    "sauces",
-    "firstCourses",
-    "mainCourses",
-    "desserts",
-  ];
-  const currentLang = i18n.language;
-  const toggleLanguage = () => {
-    const newLang = currentLang === "en" ? "it" : "en";
-    i18n.changeLanguage(newLang);
-  };
+  const { t, currentLang, toggleLanguage, recipeTypes } = useNavbar();
 
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
