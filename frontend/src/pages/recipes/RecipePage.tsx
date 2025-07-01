@@ -1,7 +1,7 @@
 import { useParams, Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
-import TomatoSauce from "./TomatoSauce";
+import TomatoSauce from "./Sauces/TomatoSauce";
 
 const recipesMap: Record<string, React.ReactNode> = {
   tomatoSauce: <TomatoSauce />,
@@ -10,7 +10,7 @@ const recipesMap: Record<string, React.ReactNode> = {
 export default function RecipePage() {
   const { slug } = useParams<{ slug: string }>();
 
-  const { t } = useTranslation("pages/recipes/_recipePage");
+  const { t } = useTranslation("pages/recipes/recipePage");
 
   // Recipe Not Found
   if (!slug || !(slug in recipesMap)) {

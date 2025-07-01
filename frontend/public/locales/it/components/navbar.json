@@ -11,6 +11,7 @@
   "recipeTypes": {
     "all": "Tutte le Ricette",
     "appetizers": "Antipasti",
+    "sauces": "Salse e Sughi",
     "firstCourses": "Primi Piatti",
     "mainCourses": "Secondi Piatti",
     "desserts": "Dolci"

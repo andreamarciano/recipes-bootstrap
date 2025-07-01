@@ -11,6 +11,7 @@
   "recipeTypes": {
     "all": "All Recipes",
     "appetizers": "Appetizers",
+    "sauces": "Sauces & Condiments",
     "firstCourses": "First Courses",
     "mainCourses": "Main Courses",
     "desserts": "Desserts"

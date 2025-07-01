@@ -1,6 +1,6 @@
 import { useTranslation } from "react-i18next";
 
-import type { Ingredient, Step } from "../../types/recipes";
+import type { Ingredient, Step } from "../../../types/recipes";
 
 // Title
 export function RecipeTitle({ children }: { children: React.ReactNode }) {
@@ -13,7 +13,7 @@ export function IngredientsList({
 }: {
   ingredients: Ingredient[];
 }) {
-  const { t } = useTranslation("pages/recipes/_recipeUtils");
+  const { t } = useTranslation("pages/recipes/recipeUtils");
 
   return (
     <>
@@ -40,7 +40,7 @@ export function IngredientsList({
 
 // Procedure
 export function ProcedureSteps({ steps }: { steps: Step[] }) {
-  const { t } = useTranslation("pages/recipes/_recipeUtils");
+  const { t } = useTranslation("pages/recipes/recipeUtils");
 
   return (
     <>
@@ -61,7 +61,7 @@ export function ProcedureSteps({ steps }: { steps: Step[] }) {
 
 // Notes
 export function RecipeNotes({ children }: { children: React.ReactNode }) {
-  const { t } = useTranslation("pages/recipes/_recipeUtils");
+  const { t } = useTranslation("pages/recipes/recipeUtils");
 
   return (
     <>

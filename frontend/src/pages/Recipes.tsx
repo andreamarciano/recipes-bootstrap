@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
-import recipesIndex from "./recipes/_recipesIndex.json";
+import recipesIndex from "./recipes/recipesIndex.json";
 
 function Recipes() {
   const { t } = useTranslation("pages/recipes");

@@ -7,6 +7,7 @@ export default function DesktopNavbar() {
   const recipeTypes = [
     "all",
     "appetizers",
+    "sauces",
     "firstCourses",
     "mainCourses",
     "desserts",
