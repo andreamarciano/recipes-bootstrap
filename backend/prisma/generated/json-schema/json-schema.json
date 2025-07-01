@@ -1,0 +1,75 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "definitions": {
+    "User": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "username": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "FavoriteRecipe": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/FavoriteRecipe"
+          }
+        }
+      }
+    },
+    "Recipe": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "name": {
+          "type": "string"
+        },
+        "favorite": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/FavoriteRecipe"
+          }
+        }
+      }
+    },
+    "FavoriteRecipe": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "user": {
+          "$ref": "#/definitions/User"
+        },
+        "recipe": {
+          "$ref": "#/definitions/Recipe"
+        }
+      }
+    }
+  },
+  "type": "object",
+  "properties": {
+    "user": {
+      "$ref": "#/definitions/User"
+    },
+    "recipe": {
+      "$ref": "#/definitions/Recipe"
+    },
+    "favoriteRecipe": {
+      "$ref": "#/definitions/FavoriteRecipe"
+    }
+  }
+}
