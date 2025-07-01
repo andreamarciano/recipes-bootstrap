@@ -7,7 +7,7 @@ import {
 import { useRecipeTranslation } from "../_Utils/useRecipeTranslation";
 
 export default function TomatoSauce() {
-  const { title, ingredients, steps, notes } = useRecipeTranslation(
+  const { title, ingredients, steps, footnotes } = useRecipeTranslation(
     "pages/recipes/sauces/tomatoSauce",
     [
       "tomato",
@@ -29,7 +29,7 @@ export default function TomatoSauce() {
       <IngredientsList ingredients={ingredients} />
       <ProcedureSteps steps={steps} />
       <RecipeNotes>
-        {notes.map((note, i) => (
+        {footnotes.map((note, i) => (
           <p key={i}>{note}</p>
         ))}
       </RecipeNotes>

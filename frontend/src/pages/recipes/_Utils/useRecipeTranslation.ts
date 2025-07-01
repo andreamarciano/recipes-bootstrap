@@ -5,7 +5,7 @@ export function useRecipeTranslation(
   namespace: string,
   ingredientKeys: string[],
   stepKeys: string[],
-  noteKeys: string[]
+  footnoteKeys: string[]
 ) {
   const { t } = useTranslation(namespace);
 
@@ -29,9 +29,9 @@ export function useRecipeTranslation(
     description: t(`procedure.${key}`),
   }));
 
-  const notes: string[] = noteKeys.map((key) => t(`notes.${key}`));
+  const footnotes: string[] = footnoteKeys.map((key) => t(`footnotes.${key}`));
 
   const title = t("title");
 
-  return { title, ingredients, steps, notes };
+  return { title, ingredients, steps, footnotes };
 }
