@@ -26,10 +26,13 @@ export function useRecipeTranslation(
     const quantity = typeof data !== "string" ? data.quantity : undefined;
     const note = typeof data !== "string" ? data.note : undefined;
 
-    // Sostituisci placeholder con indice della nota
+    // Replace placeholder with note index
     const nameWithFootnote = name.replace(
       /<sup>\{\{footnote:(\w+)\}\}<\/sup>/g,
-      (_, footnoteKey) => `<sup>${footnoteIndexMap[footnoteKey]}</sup>`
+      (_, footnoteKey) => {
+        const index = footnoteIndexMap[footnoteKey];
+        return `<sup id="ref-${index}"><a href="#footnote-${index}">${index}</a></sup>`;
+      }
     );
 
     return {
@@ -43,13 +46,18 @@ export function useRecipeTranslation(
     const raw = t(`procedure.${key}`);
     const description = raw.replace(
       /<sup>\{\{footnote:(\w+)\}\}<\/sup>/g,
-      (_, footnoteKey) => `<sup>${footnoteIndexMap[footnoteKey]}</sup>`
+      (_, footnoteKey) => {
+        const index = footnoteIndexMap[footnoteKey];
+        return `<sup id="ref-${index}"><a href="#footnote-${index}">${index}</a></sup>`;
+      }
     );
     return { description };
   });
 
   const footnotes: string[] = footnoteKeys.map((key, i) => {
-    return `${i + 1}. ${t(`footnotes.${key}`)}`;
+    const index = i + 1;
+    const text = t(`footnotes.${key}`);
+    return `<p id="footnote-${index}" class="footnote"><strong>${index}.</strong> ${text} <a href="#ref-${index}">↑</a></p>`;
   });
 
   const title = t("title");

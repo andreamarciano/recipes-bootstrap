@@ -47,17 +47,22 @@ export function ProcedureSteps({ steps }: { steps: Step[] }) {
 
   return (
     <>
-      <h2>{t("procedure")}</h2>
-      <ol className="mb-4">
-        {steps.map(({ description, note }, i) => (
-          <li key={i} className="mb-3">
-            <span dangerouslySetInnerHTML={{ __html: description }} />
-            {note && (
-              <div className="small text-muted fst-italic mt-1">{note}</div>
-            )}
-          </li>
-        ))}
-      </ol>
+      <h2 className="mb-4">{t("procedure")}</h2>
+      <div className="mx-auto" style={{ maxWidth: "700px" }}>
+        <ol className="mb-4 list-group list-group-numbered custom-numbered-list">
+          {steps.map(({ description, note }, i) => (
+            <li
+              key={i}
+              className="list-group-item d-flex flex-column align-items-center gap-1"
+            >
+              <span dangerouslySetInnerHTML={{ __html: description }} />
+              {note && (
+                <div className="small text-muted fst-italic mt-1">{note}</div>
+              )}
+            </li>
+          ))}
+        </ol>
+      </div>
     </>
   );
 }
@@ -68,8 +73,10 @@ export function RecipeNotes({ children }: { children: React.ReactNode }) {
 
   return (
     <>
-      <h2>{t("notes")}</h2>
-      <div className="alert alert-info">{children}</div>
+      <h2 className="mb-4">{t("notes")}</h2>
+      <div className="alert alert-info mx-auto" style={{ maxWidth: "500px" }}>
+        {children}
+      </div>
     </>
   );
 }

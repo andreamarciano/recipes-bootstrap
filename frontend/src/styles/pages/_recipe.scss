@@ -1,0 +1,30 @@
+sup a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.footnote {
+  font-size: 0.95rem;
+  margin-bottom: 0.5rem;
+  line-height: 1.4;
+}
+
+.footnote a {
+  font-size: 0.8em;
+  text-decoration: none;
+  margin-left: 0.25em;
+  color: yellowgreen;
+}
+
+.custom-numbered-list .list-group-item::before {
+  background-color: #f8f9fa;
+  color: #333;
+  font-weight: bold;
+  font-size: 1rem;
+  padding: 0.4rem 0.4rem;
+  margin-bottom: 2px;
+  border: 2px solid #dee2e6;
+  border-radius: 50%;
+  min-width: 2.5rem;
+  text-align: center;
+}

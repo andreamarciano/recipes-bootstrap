@@ -30,7 +30,7 @@ export default function TomatoSauce() {
       <ProcedureSteps steps={steps} />
       <RecipeNotes>
         {footnotes.map((note, i) => (
-          <p key={i}>{note}</p>
+          <div key={i} dangerouslySetInnerHTML={{ __html: note }} />
         ))}
       </RecipeNotes>
     </article>
