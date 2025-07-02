@@ -14,6 +14,8 @@ import Recipes from "./pages/Recipes.tsx";
 import RecipePage from "./pages/recipes/RecipePage.tsx";
 import NotFound from "./pages/NotFound.tsx";
 
+import { UserProvider } from "./userContext/UserContext.tsx";
+
 const router = createBrowserRouter([
   {
     path: "/",
@@ -29,6 +31,8 @@ const router = createBrowserRouter([
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
-    <RouterProvider router={router} />
+    <UserProvider>
+      <RouterProvider router={router} />
+    </UserProvider>
   </StrictMode>
 );
