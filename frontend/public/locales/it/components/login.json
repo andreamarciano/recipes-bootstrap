@@ -1,0 +1,30 @@
+{
+  "loginBtn": "Accedi",
+  "loginForm": {
+    "title": "Accedi",
+    "subtitle": "Accedi per più funzionalità",
+    "noAccount": "Non hai un account?",
+    "switch": "Registrati",
+    "username": "Nome Utente",
+    "password": "Password",
+    "pwAriaHide": "Nascondi Password",
+    "pwAriaShow": "Mostra Password",
+    "login": "Accedi"
+  },
+  "registerForm": {
+    "title": "Crea il tuo account",
+    "haveAccount": "Hai già un account?",
+    "switch": "Accedi",
+    "email": "Email",
+    "username": "Nome Utente",
+    "usernameAria": "Il nome utente deve essere lungo tra 3 e 15 caratteri.",
+    "password": "Password",
+    "pwAria": "La password deve essere lunga almeno 8 caratteri, con maiuscole, minuscole, numeri e caratteri speciali (!@#$%^&*).",
+    "register": "Crea Account"
+  },
+  "signedIn": {
+    "profile": "Profilo",
+    "settings": "Impostazioni",
+    "logout": "Disconnetti"
+  }
+}

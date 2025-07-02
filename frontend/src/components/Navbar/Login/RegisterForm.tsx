@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { Eye, EyeOff } from "lucide-react";
+
+import { useTranslation } from "react-i18next";
 import { useUser } from "../../../userContext/useUser";
 
 interface Props {
@@ -7,6 +9,7 @@ interface Props {
 }
 
 export default function RegisterForm({ onSwitch }: Props) {
+  const { t } = useTranslation("components/login");
   const { setUser } = useUser();
 
   // User Data
@@ -80,29 +83,29 @@ export default function RegisterForm({ onSwitch }: Props) {
 
   return (
     <>
-      <h5>Create your account</h5>
+      <h5>{t("registerForm.title")}</h5>
 
       {/* Switch Menu */}
       <p className="text-muted mb-3">
-        Already have an account?{" "}
+        {t("registerForm.haveAccount")}
         <button
           onClick={onSwitch}
           type="button"
           className="btn btn-link p-0 align-baseline"
         >
-          Sign In
+          {t("registerForm.switch")}
         </button>
       </p>
 
       {/* Email */}
       <div className="mb-3">
         <label htmlFor="email" className="form-label">
-          Email
+          {t("registerForm.email")}
         </label>
         <input
           id="email"
           type="email"
-          placeholder="Email"
+          placeholder={t("registerForm.email")}
           className="form-control"
           value={email}
           maxLength={64}
@@ -114,12 +117,12 @@ export default function RegisterForm({ onSwitch }: Props) {
       {/* Username */}
       <div className="mb-3">
         <label htmlFor="username" className="form-label">
-          Username
+          {t("registerForm.username")}
         </label>
         <input
           id="username"
           type="text"
-          placeholder="Username"
+          placeholder={t("registerForm.username")}
           className="form-control"
           value={username}
           maxLength={15}
@@ -128,18 +131,18 @@ export default function RegisterForm({ onSwitch }: Props) {
           required
         />
         <div id="usernameHelp" className="form-text">
-          Username must be between 3 and 15 characters.
+          {t("registerForm.usernameAria")}
         </div>
       </div>
 
       {/* Password */}
       <div className="mb-3 position-relative">
         <label htmlFor="password" className="form-label">
-          Password
+          {t("registerForm.password")}
         </label>
         <input
           type={showPassword ? "text" : "password"}
-          placeholder="Password"
+          placeholder={t("registerForm.password")}
           className="form-control"
           value={password}
           maxLength={20}
@@ -162,8 +165,7 @@ export default function RegisterForm({ onSwitch }: Props) {
           {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
         </button>
         <div id="passwordHelp" className="form-text">
-          Password must be at least 8 characters, with uppercase, lowercase,
-          number, special (!@#$%^&*).
+          {t("registerForm.pwAria")}
         </div>
       </div>
 
@@ -173,7 +175,7 @@ export default function RegisterForm({ onSwitch }: Props) {
         type="submit"
         className="btn btn-primary w-100"
       >
-        Create account
+        {t("registerForm.register")}
       </button>
     </>
   );

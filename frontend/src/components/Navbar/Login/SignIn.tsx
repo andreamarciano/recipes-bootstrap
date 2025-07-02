@@ -1,8 +1,13 @@
 import { useState, useRef, useEffect } from "react";
+
+import { useTranslation } from "react-i18next";
+
 import LoginForm from "./LoginForm";
 import RegisterForm from "./RegisterForm";
 
 export default function SignIn() {
+  const { t } = useTranslation("components/login");
+
   const [authMode, setAuthMode] = useState<"login" | "register">("login");
   const [showMenu, setShowMenu] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
@@ -25,7 +30,7 @@ export default function SignIn() {
         type="button"
         onClick={() => setShowMenu((prev) => !prev)}
       >
-        🔒 Sign in
+        🔒 {t("loginBtn")}
       </button>
 
       {showMenu && (

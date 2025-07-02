@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { Eye, EyeOff } from "lucide-react";
+
+import { useTranslation } from "react-i18next";
 import { useUser } from "../../../userContext/useUser";
 
 interface Props {
@@ -7,6 +9,7 @@ interface Props {
 }
 
 export default function LoginForm({ onSwitch }: Props) {
+  const { t } = useTranslation("components/login");
   const { setUser } = useUser();
 
   // User Data
@@ -41,30 +44,30 @@ export default function LoginForm({ onSwitch }: Props) {
 
   return (
     <>
-      <h5>Sign in</h5>
-      <p className="text-muted mb-2">Get access to more features</p>
+      <h5>{t("loginForm.title")}</h5>
+      <p className="text-muted mb-2">{t("loginForm.subtitle")}</p>
 
       {/* Switch Menu */}
       <p className="text-muted mb-3">
-        Don't have an account?{" "}
+        {t("loginForm.noAccount")}
         <button
           onClick={onSwitch}
           type="button"
           className="btn btn-link p-0 align-baseline"
         >
-          Register
+          {t("loginForm.switch")}
         </button>
       </p>
 
       {/* Username */}
       <div className="mb-3">
         <label htmlFor="username" className="form-label">
-          Username
+          {t("loginForm.username")}
         </label>
         <input
           id="username"
           type="text"
-          placeholder="Username"
+          placeholder={t("loginForm.username")}
           className="form-control"
           value={username}
           onChange={(e) => setUsername(e.target.value)}
@@ -75,11 +78,11 @@ export default function LoginForm({ onSwitch }: Props) {
       {/* Password */}
       <div className="mb-3 position-relative">
         <label htmlFor="password" className="form-label">
-          Password
+          {t("loginForm.password")}
         </label>
         <input
           type={showPassword ? "text" : "password"}
-          placeholder="Password"
+          placeholder={t("loginForm.password")}
           className="form-control"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
@@ -88,7 +91,9 @@ export default function LoginForm({ onSwitch }: Props) {
         <button
           type="button"
           aria-pressed={showPassword}
-          aria-label={showPassword ? "Hide password" : "Show password"}
+          aria-label={
+            showPassword ? t("loginForm.pwAriaHide") : t("loginForm.pwAriaShow")
+          }
           onClick={() => setShowPassword((prev) => !prev)}
           className="btn btn-sm text-secondary me-2"
           style={{
@@ -107,7 +112,7 @@ export default function LoginForm({ onSwitch }: Props) {
         type="submit"
         className="btn btn-primary w-100"
       >
-        Sign In
+        {t("loginForm.login")}
       </button>
     </>
   );

@@ -1,0 +1,30 @@
+{
+  "loginBtn": "Sign In",
+  "loginForm": {
+    "title": "Sign In",
+    "subtitle": "Get access to more features",
+    "noAccount": "Don't have an account?",
+    "switch": "Register",
+    "username": "Username",
+    "password": "Password",
+    "pwAriaHide": "Hide password",
+    "pwAriaShow": "Show password",
+    "login": "Sign In"
+  },
+  "registerForm": {
+    "title": "Create your account",
+    "haveAccount": "Already have an account?",
+    "switch": "Sign In",
+    "email": "Email",
+    "username": "Username",
+    "usernameAria": "Username must be between 3 and 15 characters.",
+    "password": "Password",
+    "pwAria": "Password must be at least 8 characters, with uppercase, lowercase, number, special (!@#$%^&*).",
+    "register": "Create Account"
+  },
+  "signedIn": {
+    "profile": "Profile",
+    "settings": "Settings",
+    "logout": "Logout"
+  }
+}
