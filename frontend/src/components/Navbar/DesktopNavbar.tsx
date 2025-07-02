@@ -2,11 +2,17 @@ import { useState } from "react";
 import { NavLink } from "react-router-dom";
 
 import useNavbar from "./useNavbar";
+import { useUser } from "../../userContext/useUser";
+
+import SignIn from "./Login/SignIn";
+import SignedInMenu from "./Login/SignedInMenu";
 
 export default function DesktopNavbar() {
   const { t, currentLang, toggleLanguage, recipeTypes } = useNavbar();
 
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+
+  const { user } = useUser();
 
   return (
     <>
@@ -104,7 +110,8 @@ export default function DesktopNavbar() {
               >
                 {currentLang === "en" ? "🇺🇸" : "🇮🇹"}
               </button>
-              <button className="btn btn-outline-light">{t("login")}</button>
+
+              {user ? <SignedInMenu /> : <SignIn />}
             </div>
           </div>
         </div>
