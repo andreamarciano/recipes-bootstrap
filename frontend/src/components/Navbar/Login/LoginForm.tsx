@@ -47,42 +47,66 @@ export default function LoginForm({ onSwitch }: Props) {
       {/* Switch Menu */}
       <p className="text-muted mb-3">
         Don't have an account?{" "}
-        <button onClick={onSwitch} className="btn btn-link p-0 align-baseline">
+        <button
+          onClick={onSwitch}
+          type="button"
+          className="btn btn-link p-0 align-baseline"
+        >
           Register
         </button>
       </p>
 
       {/* Username */}
       <div className="mb-3">
+        <label htmlFor="username" className="form-label">
+          Username
+        </label>
         <input
+          id="username"
           type="text"
           placeholder="Username"
           className="form-control"
           value={username}
           onChange={(e) => setUsername(e.target.value)}
+          required
         />
       </div>
 
       {/* Password */}
       <div className="mb-3 position-relative">
+        <label htmlFor="password" className="form-label">
+          Password
+        </label>
         <input
           type={showPassword ? "text" : "password"}
           placeholder="Password"
           className="form-control"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
+          required
         />
         <button
           type="button"
+          aria-pressed={showPassword}
+          aria-label={showPassword ? "Hide password" : "Show password"}
           onClick={() => setShowPassword((prev) => !prev)}
-          className="btn btn-sm btn-outline-secondary position-absolute top-50 end-0 translate-middle-y me-2"
+          className="btn btn-sm text-secondary me-2"
+          style={{
+            top: "34.5px",
+            right: "0px",
+            position: "absolute",
+          }}
         >
           {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
         </button>
       </div>
 
       {/* Login */}
-      <button onClick={handleLogin} className="btn btn-primary w-100">
+      <button
+        onClick={handleLogin}
+        type="submit"
+        className="btn btn-primary w-100"
+      >
         Sign In
       </button>
     </>

@@ -3,10 +3,16 @@ import { NavLink } from "react-router-dom";
 
 import useNavbar from "./useNavbar";
 
+import { useUser } from "../../userContext/useUser";
+import SignIn from "./Login/SignIn";
+import SignedInMenu from "./Login/SignedInMenu";
+
 export default function MobileNavbar() {
   const { t, currentLang, toggleLanguage, recipeTypes } = useNavbar();
 
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+
+  const { user } = useUser();
 
   return (
     <>
@@ -159,10 +165,10 @@ export default function MobileNavbar() {
           </form>
 
           {/* Language toggle + Login */}
-          <div className="d-flex flex-row gap-2 justify-content-center">
+          <div className="d-flex flex-column gap-2 justify-content-center">
             <button
               onClick={toggleLanguage}
-              className="btn btn-outline-light"
+              className="btn btn-outline-light w-25"
               aria-label={t("toggleLanguage")}
               title={t("switchLanguageTo", {
                 lang: t(`language.${currentLang === "en" ? "it" : "en"}`),
@@ -170,7 +176,8 @@ export default function MobileNavbar() {
             >
               {currentLang === "en" ? "🇺🇸" : "🇮🇹"}
             </button>
-            <button className="btn btn-outline-light">{t("login")}</button>
+
+            {user ? <SignedInMenu /> : <SignIn />}
           </div>
         </div>
       </div>

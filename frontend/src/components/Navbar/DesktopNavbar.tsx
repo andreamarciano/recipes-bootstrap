@@ -2,8 +2,8 @@ import { useState } from "react";
 import { NavLink } from "react-router-dom";
 
 import useNavbar from "./useNavbar";
-import { useUser } from "../../userContext/useUser";
 
+import { useUser } from "../../userContext/useUser";
 import SignIn from "./Login/SignIn";
 import SignedInMenu from "./Login/SignedInMenu";
 

@@ -1,33 +1,51 @@
-import { useState } from "react";
-
+import { useState, useRef, useEffect } from "react";
 import LoginForm from "./LoginForm";
 import RegisterForm from "./RegisterForm";
 
 export default function SignIn() {
   const [authMode, setAuthMode] = useState<"login" | "register">("login");
+  const [showMenu, setShowMenu] = useState(false);
+  const menuRef = useRef<HTMLDivElement>(null);
+
+  // Close on outside click
+  useEffect(() => {
+    const handleClickOutside = (e: MouseEvent) => {
+      if (menuRef.current && !menuRef.current.contains(e.target as Node)) {
+        setShowMenu(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
 
   return (
-    <div className="dropdown">
+    <div className="position-relative" ref={menuRef}>
       <button
-        className="btn btn-outline-light dropdown-toggle"
+        className="btn btn-outline-light"
         type="button"
-        id="signInDropdown"
-        data-bs-toggle="dropdown"
-        aria-expanded="false"
+        onClick={() => setShowMenu((prev) => !prev)}
       >
         🔒 Sign in
       </button>
 
-      <div
-        className="dropdown-menu dropdown-menu-end p-3"
-        style={{ minWidth: "20rem" }}
-      >
-        {authMode === "login" ? (
-          <LoginForm onSwitch={() => setAuthMode("register")} />
-        ) : (
-          <RegisterForm onSwitch={() => setAuthMode("login")} />
-        )}
-      </div>
+      {showMenu && (
+        <div
+          className="dropdown-menu show p-3 dropdown-menu-custom"
+          style={{
+            position: "absolute",
+            top: "120%",
+            right: -10,
+            minWidth: "20rem",
+            zIndex: 9999,
+          }}
+        >
+          {authMode === "login" ? (
+            <LoginForm onSwitch={() => setAuthMode("register")} />
+          ) : (
+            <RegisterForm onSwitch={() => setAuthMode("login")} />
+          )}
+        </div>
+      )}
     </div>
   );
 }

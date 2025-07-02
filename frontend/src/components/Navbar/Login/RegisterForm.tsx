@@ -85,65 +85,94 @@ export default function RegisterForm({ onSwitch }: Props) {
       {/* Switch Menu */}
       <p className="text-muted mb-3">
         Already have an account?{" "}
-        <button onClick={onSwitch} className="btn btn-link p-0 align-baseline">
+        <button
+          onClick={onSwitch}
+          type="button"
+          className="btn btn-link p-0 align-baseline"
+        >
           Sign In
         </button>
       </p>
 
       {/* Email */}
       <div className="mb-3">
+        <label htmlFor="email" className="form-label">
+          Email
+        </label>
         <input
+          id="email"
           type="email"
           placeholder="Email"
           className="form-control"
           value={email}
           maxLength={64}
           onChange={(e) => setEmail(e.target.value)}
+          required
         />
       </div>
 
       {/* Username */}
       <div className="mb-3">
+        <label htmlFor="username" className="form-label">
+          Username
+        </label>
         <input
+          id="username"
           type="text"
           placeholder="Username"
           className="form-control"
           value={username}
           maxLength={15}
           onChange={(e) => setUsername(e.target.value)}
+          aria-describedby="usernameHelp"
+          required
         />
-        <div className="form-text">
+        <div id="usernameHelp" className="form-text">
           Username must be between 3 and 15 characters.
         </div>
       </div>
 
       {/* Password */}
       <div className="mb-3 position-relative">
-        <div className="relative">
-          <input
-            type={showPassword ? "text" : "password"}
-            placeholder="Password"
-            className="form-control"
-            value={password}
-            maxLength={20}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-          <button
-            type="button"
-            onClick={() => setShowPassword((prev) => !prev)}
-            className="btn btn-sm btn-outline-secondary position-absolute top-50 end-0 translate-middle-y me-2"
-          >
-            {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
-          </button>
-          <div className="form-text">
-            Password must be at least 8 characters, with uppercase, lowercase,
-            number, special (!@#$%^&*).
-          </div>
+        <label htmlFor="password" className="form-label">
+          Password
+        </label>
+        <input
+          type={showPassword ? "text" : "password"}
+          placeholder="Password"
+          className="form-control"
+          value={password}
+          maxLength={20}
+          onChange={(e) => setPassword(e.target.value)}
+          aria-describedby="passwordHelp"
+          required
+        />
+        <button
+          type="button"
+          aria-pressed={showPassword}
+          aria-label={showPassword ? "Hide password" : "Show password"}
+          onClick={() => setShowPassword((prev) => !prev)}
+          className="btn btn-sm text-secondary me-2"
+          style={{
+            top: "34.5px",
+            right: "0px",
+            position: "absolute",
+          }}
+        >
+          {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
+        </button>
+        <div id="passwordHelp" className="form-text">
+          Password must be at least 8 characters, with uppercase, lowercase,
+          number, special (!@#$%^&*).
         </div>
       </div>
 
       {/* Register */}
-      <button onClick={handleRegister} className="btn btn-primary w-100">
+      <button
+        onClick={handleRegister}
+        type="submit"
+        className="btn btn-primary w-100"
+      >
         Create account
       </button>
     </>
