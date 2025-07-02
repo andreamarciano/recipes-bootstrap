@@ -14,7 +14,7 @@ export default function SignedInMenu() {
   return (
     <div className="dropdown">
       <button
-        className="btn btn-outline-light dropdown-toggle d-flex align-items-center gap-2"
+        className="btn btn-outline-light d-flex align-items-center gap-2 custom-dropdown-toggle"
         type="button"
         id="userMenuDropdown"
         data-bs-toggle="dropdown"
@@ -50,7 +50,7 @@ export default function SignedInMenu() {
             className="dropdown-item d-flex align-items-center gap-2 text-danger"
             onClick={logout}
           >
-            <LogOut size={18} className="-rotate-180" /> {t("signedIn.logout")}
+            <LogOut size={18} className="logout" /> {t("signedIn.logout")}
           </button>
         </li>
       </ul>

@@ -19,3 +19,17 @@
 .transition-transform {
   transition: transform 0.4s ease;
 }
+
+/* Login */
+
+.logout {
+  transform: rotate(-180deg);
+}
+
+.custom-dropdown-toggle:hover,
+.custom-dropdown-toggle:focus,
+.custom-dropdown-toggle:active,
+.custom-dropdown-toggle.show {
+  background-color: rgba(255, 255, 255, 0.15) !important;
+  color: inherit !important;
+}
