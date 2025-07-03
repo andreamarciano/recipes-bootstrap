@@ -2,9 +2,13 @@ import { useParams, Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
 import TomatoSauce from "./Sauces/TomatoSauce";
+import Tiramisu from "./Dessert/Tiramisu";
+import VanillaOrangeCake from "./Dessert/VanillaOrangeCake";
 
 const recipesMap: Record<string, React.ReactNode> = {
   tomatoSauce: <TomatoSauce />,
+  tiramisu: <Tiramisu />,
+  vanillaOrangeCake: <VanillaOrangeCake />,
 };
 
 export default function RecipePage() {

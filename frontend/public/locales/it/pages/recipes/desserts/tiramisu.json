@@ -1,0 +1,51 @@
+{
+  "title": "Tiramisù",
+  "ingredients": {
+    "mascarpone": {
+      "name": "Mascarpone",
+      "quantity": "250 g"
+    },
+    "freshCream": {
+      "name": "Panna Fresca",
+      "quantity": "250 g"
+    },
+    "sugar": {
+      "name": "Zucchero",
+      "quantity": "120 g"
+    },
+    "eggs": {
+      "name": "Uova",
+      "quantity": "3"
+    },
+    "vanillaPowder": {
+      "name": "Vanillina",
+      "quantity": "1 bustina"
+    },
+    "salt": "Sale",
+    "cocoaPowder": "Cacao Amaro",
+    "coffee": {
+      "name": "Caffè",
+      "quantity": "250 ml"
+    },
+    "ladyfingers": {
+      "name": "Savoiardi",
+      "quantity": "1 pacco"
+    }
+  },
+  "tools": {
+    "tool1": "Fruste elettriche",
+    "tool2": "Frusta manuale / spatola",
+    "tool3": "3-4 ciotole",
+    "tool4": "Tortiera",
+    "tool5": "Setaccio"
+  },
+  "procedure": {
+    "step1": "Separare gli albumi dai tuorli in due recipienti separati.",
+    "step2": "Aggiungere un pizzico di sale agli albumi e montare a neve durissima con le fruste elettriche (circa 10 minuti).",
+    "step3": "Montare zucchero e tuorli (composto chiaro e spumoso), quindi aggiungere vanillina e mascarpone; continuare a sbattere con le fruste elettriche finché non sarà tutto ben amalgamato.",
+    "step4": "Montare la panna ed aggiungerla ai tuorli, amalgamando i due composti con una frusta (movimenti delicati dal basso verso l'alto per incorporare aria). Infine aggiungere gli albumi, continuando ad amalgamare delicatamente.",
+    "step5": "Versare in un recipiente il caffè caldo. Bagnare i savoiardi su entrambi i lati (toccata e fuga) e disporli sulla base della tortiera.",
+    "step6": "Proseguire con uno strato di crema, poi ancora uno di savoiardi inzuppati, ecc.",
+    "step7": "Spolverare con abbondante cacao amaro. Lasciare in frigorifero per qualche ora."
+  }
+}

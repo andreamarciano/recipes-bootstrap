@@ -1,0 +1,50 @@
+{
+  "title": "Torta Arancia Vaniglia",
+  "ingredients": {
+    "flour": {
+      "name": "Farina 00",
+      "quantity": "300 g"
+    },
+    "sugar": {
+      "name": "Zucchero",
+      "quantity": "200 g"
+    },
+    "vegetableOil": {
+      "name": "Olio di semi",
+      "quantity": "120 ml"
+    },
+    "water": {
+      "name": "Acqua",
+      "quantity": "50 ml"
+    },
+    "orange": {
+      "name": "Arancia Vaniglia",
+      "quantity": "2"
+    },
+    "eggs": {
+      "name": "Uova",
+      "quantity": "3"
+    },
+    "bakingPowder": {
+      "name": "Lievito istananeo per dolci",
+      "quantity": "1 bustina"
+    },
+    "butter": "Burro",
+    "powderedSugar": "Zucchero a velo"
+  },
+  "tools": {
+    "tool1": "Frullatore a immersione",
+    "tool2": "Fruste elettriche",
+    "tool3": "Tortiera",
+    "tool4": "Setaccio"
+  },
+  "procedure": {
+    "step1": "Tagliare le estremità più dure da una arancia intera, compresa la buccia, quindi tagliarla a tocchetti; estrarre solo la polpa dalla seconda arancia. Frullare il tutto nel mixer, fino a ottenere una purea.",
+    "step2": "Montare le uova con lo zucchero fino ad ottenere un composto chiaro e spumoso.",
+    "step3": "Unire il composto appena ottenuto con la purea di arance, quindi aggiungere olio e acqua, e mescolare a bassa velocità.",
+    "step4": "Unire farina e lievito al composto fino ad ottenere una crema abbastanza liquida, ma omogenea.",
+    "step5": "Imburrare ed infarinare una tortiera da 22 cm di diametro e versare l'impasto.",
+    "step6": "Cuocere in forno statico preriscaldato a 170° per 35 minuti, poi in modalità ventilata per altri 10 minuti. Fare la prova con lo stecchino al centro prima di sfornare.",
+    "step7": "Lasciare raffreddare e decorare con zucchero a velo."
+  }
+}

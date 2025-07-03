@@ -1,0 +1,50 @@
+{
+  "title": "Vanilla Orange Cake",
+  "ingredients": {
+    "flour": {
+      "name": "All-purpose flour (00)",
+      "quantity": "300 g"
+    },
+    "sugar": {
+      "name": "Sugar",
+      "quantity": "200 g"
+    },
+    "vegetableOil": {
+      "name": "Vegetable oil",
+      "quantity": "120 ml"
+    },
+    "water": {
+      "name": "Water",
+      "quantity": "50 ml"
+    },
+    "orange": {
+      "name": "Vanilla Orange",
+      "quantity": "2"
+    },
+    "eggs": {
+      "name": "Eggs",
+      "quantity": "3"
+    },
+    "bakingPowder": {
+      "name": "Instant baking powder for cakes",
+      "quantity": "1 sachet"
+    },
+    "butter": "Butter",
+    "powderedSugar": "Powdered sugar"
+  },
+  "tools": {
+    "tool1": "Immersion blender",
+    "tool2": "Electric beaters",
+    "tool3": "Cake pan",
+    "tool4": "Sifter"
+  },
+  "procedure": {
+    "step1": "Cut off the hard ends of a whole orange, including the peel, and chop it into chunks; extract only the pulp from the second orange. Blend everything in the blender until smooth.",
+    "step2": "Beat the eggs with the sugar until the mixture is light and frothy.",
+    "step3": "Add the egg mixture to the orange puree, then add oil and water, and mix at low speed.",
+    "step4": "Add the flour and baking powder to the mixture until you get a fairly liquid, but homogeneous batter.",
+    "step5": "Grease and flour a 22 cm diameter cake pan and pour in the batter.",
+    "step6": "Bake in a preheated static oven at 170°C for 35 minutes, then switch to convection mode for another 10 minutes. Do the toothpick test in the center before removing from the oven.",
+    "step7": "Let the cake cool and decorate with powdered sugar."
+  }
+}

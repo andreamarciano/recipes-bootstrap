@@ -13,18 +13,21 @@ datasource db {
 }
 
 model User {
-  id             Int              @id @default(autoincrement())
-  username       String           @unique
-  password       String
-  email          String           @unique
-  createdAt      DateTime         @default(now())
-  FavoriteRecipe FavoriteRecipe[]
+  id          Int              @id @default(autoincrement())
+  username    String           @unique
+  password    String
+  email       String           @unique
+  createdAt   DateTime         @default(now())
+  favorite    FavoriteRecipe[]
+  comment     Comment[]
+  commentLike CommentLike[]
 }
 
 model Recipe {
   id       Int              @id @default(autoincrement())
   name     String           @unique
   favorite FavoriteRecipe[]
+  comment  Comment[]
 }
 
 model FavoriteRecipe {
@@ -35,4 +38,31 @@ model FavoriteRecipe {
   recipe   Recipe @relation(fields: [recipeId], references: [id])
 
   @@unique([userId, recipeId])
+}
+
+model Comment {
+  id        Int      @id @default(autoincrement())
+  content   String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  userId    Int
+  recipeId  Int
+
+  user   User          @relation(fields: [userId], references: [id], onDelete: Cascade)
+  recipe Recipe        @relation(fields: [recipeId], references: [id], onDelete: Cascade)
+  likes  CommentLike[]
+
+  @@index([recipeId])
+}
+
+model CommentLike {
+  id        Int      @id @default(autoincrement())
+  userId    Int
+  commentId Int
+  createdAt DateTime @default(now())
+
+  user    User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+  comment Comment @relation(fields: [commentId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, commentId])
 }

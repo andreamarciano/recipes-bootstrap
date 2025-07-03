@@ -1,0 +1,51 @@
+{
+  "title": "Tiramisu",
+  "ingredients": {
+    "mascarpone": {
+      "name": "Mascarpone",
+      "quantity": "250 g"
+    },
+    "freshCream": {
+      "name": "Fresh Cream",
+      "quantity": "250 g"
+    },
+    "sugar": {
+      "name": "Sugar",
+      "quantity": "120 g"
+    },
+    "eggs": {
+      "name": "Eggs",
+      "quantity": "3"
+    },
+    "vanillaPowder": {
+      "name": "Vanilla powder",
+      "quantity": "1 packet"
+    },
+    "salt": "Salt",
+    "cocoaPowder": "Unsweetened Cocoa powder",
+    "coffee": {
+      "name": "Coffee",
+      "quantity": "250 ml"
+    },
+    "ladyfingers": {
+      "name": "Ladyfingers",
+      "quantity": "1 packet"
+    }
+  },
+  "tools": {
+    "tool1": "Electric Beaters",
+    "tool2": "Manual Whisk / Spatula",
+    "tool3": "3-4 Bowls",
+    "tool4": "Cake Pan",
+    "tool5": "Sifter"
+  },
+  "procedure": {
+    "step1": "Separate the egg whites from the yolks into two separate bowls.",
+    "step2": "Add a pinch of salt to the egg whites and beat them with an electric mixer until very stiff peaks form (about 10 minutes).",
+    "step3": "Whisk the sugar and yolks until the mixture is light and frothy, then add the vanilla and mascarpone; continue mixing with the electric mixer until everything is well combined.",
+    "step4": "Whip the cream and add it to the yolk mixture, folding gently with a whisk (use upward, gentle movements to incorporate air). Finally, add the egg whites, continuing to fold gently.",
+    "step5": "Pour the hot coffee into a bowl. Dip the ladyfingers briefly on both sides and arrange them on the base of the cake pan.",
+    "step6": "Continue with a layer of cream, then another layer of dipped ladyfingers, and so on.",
+    "step7": "Dust generously with unsweetened cocoa powder. Refrigerate for a few hours before serving."
+  }
+}

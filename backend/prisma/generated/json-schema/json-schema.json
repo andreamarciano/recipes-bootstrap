@@ -20,10 +20,22 @@
           "type": "string",
           "format": "date-time"
         },
-        "FavoriteRecipe": {
+        "favorite": {
           "type": "array",
           "items": {
             "$ref": "#/definitions/FavoriteRecipe"
+          }
+        },
+        "comment": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Comment"
+          }
+        },
+        "commentLike": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/CommentLike"
           }
         }
       }
@@ -42,6 +54,12 @@
           "items": {
             "$ref": "#/definitions/FavoriteRecipe"
           }
+        },
+        "comment": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Comment"
+          }
         }
       }
     },
@@ -58,6 +76,55 @@
           "$ref": "#/definitions/Recipe"
         }
       }
+    },
+    "Comment": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "content": {
+          "type": "string"
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "user": {
+          "$ref": "#/definitions/User"
+        },
+        "recipe": {
+          "$ref": "#/definitions/Recipe"
+        },
+        "likes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/CommentLike"
+          }
+        }
+      }
+    },
+    "CommentLike": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "user": {
+          "$ref": "#/definitions/User"
+        },
+        "comment": {
+          "$ref": "#/definitions/Comment"
+        }
+      }
     }
   },
   "type": "object",
@@ -70,6 +137,12 @@
     },
     "favoriteRecipe": {
       "$ref": "#/definitions/FavoriteRecipe"
+    },
+    "comment": {
+      "$ref": "#/definitions/Comment"
+    },
+    "commentLike": {
+      "$ref": "#/definitions/CommentLike"
     }
   }
 }
