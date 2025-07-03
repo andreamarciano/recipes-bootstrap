@@ -8,7 +8,6 @@ import {
 import { useRecipeTranslation } from "../_Utils/useRecipeTranslation";
 
 import { useParams, useOutletContext } from "react-router-dom";
-import RecipeFavoriteButton from "../_Utils/RecipeFavoriteButton";
 import type { User } from "../../../types/user";
 import type { Recipe } from "../../../types/user";
 
@@ -36,6 +35,7 @@ export default function TomatoSauce() {
     ["tomato", "time"]
   );
 
+  /* Parte ripetuta */
   const { slug } = useParams<{ slug: string }>();
   const { favoriteRecipes, setFavoriteRecipes, user, recipes } =
     useOutletContext<OutletContextType>();
@@ -52,23 +52,23 @@ export default function TomatoSauce() {
 
   return (
     <article className="mx-auto px-3 my-4" style={{ maxWidth: 750 }}>
-      <RecipeTitle>
+      <RecipeTitle
+        recipeId={recipe.id}
+        user={user}
+        favoriteRecipes={favoriteRecipes}
+        setFavoriteRecipes={setFavoriteRecipes}
+      >
         {title}
-        {user && (
-          <RecipeFavoriteButton
-            recipeId={recipe.id}
-            user={user}
-            favoriteRecipes={favoriteRecipes}
-            setFavoriteRecipes={setFavoriteRecipes}
-          />
-        )}
       </RecipeTitle>
+
       <SectionWrapper>
         <IngredientsList ingredients={ingredients} />
       </SectionWrapper>
+
       <SectionWrapper>
         <ProcedureSteps steps={steps} />
       </SectionWrapper>
+
       <SectionWrapper>
         <RecipeFootnotes>
           {footnotes.map((note, i) => (

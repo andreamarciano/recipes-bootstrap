@@ -3,9 +3,40 @@ import { useTranslation } from "react-i18next";
 import type { Ingredient, Step } from "../../../types/recipes";
 const transPath = "pages/recipes/recipeUtils";
 
+import RecipeFavoriteButton from "./RecipeFavoriteButton";
+import type { User } from "../../../types/user";
+
+type RecipeTitleProps = {
+  children: React.ReactNode;
+  recipeId?: number;
+  user?: User | null;
+  favoriteRecipes?: number[];
+  setFavoriteRecipes?: React.Dispatch<React.SetStateAction<number[]>>;
+};
+
 // Title
-export function RecipeTitle({ children }: { children: React.ReactNode }) {
-  return <h1 className="mb-4">{children}</h1>;
+export function RecipeTitle({
+  children,
+  recipeId,
+  user,
+  favoriteRecipes,
+  setFavoriteRecipes,
+}: RecipeTitleProps) {
+  return (
+    <>
+      <h1 className="mb-4">
+        {children}
+        {user && recipeId && favoriteRecipes && setFavoriteRecipes && (
+          <RecipeFavoriteButton
+            recipeId={recipeId}
+            user={user}
+            favoriteRecipes={favoriteRecipes}
+            setFavoriteRecipes={setFavoriteRecipes}
+          />
+        )}
+      </h1>
+    </>
+  );
 }
 
 // Ingredients
