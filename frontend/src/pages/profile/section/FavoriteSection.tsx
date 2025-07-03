@@ -39,15 +39,13 @@ export default function FavoriteSection({
         <p className="text-muted fst-italic">No favorite recipes found.</p>
       ) : (
         <ul className="list-unstyled">
-          {favorites.map((recipe) => (
-            <li key={recipe.id}>
+          {favorites.map((f) => (
+            <li key={f.id}>
               <button
                 className="btn btn-link text-info p-0"
-                onClick={() =>
-                  navigate(`/recipes/${recipe.name.toLowerCase()}`)
-                }
+                onClick={() => navigate(`/recipes/${f.name}`)}
               >
-                {recipe.name}
+                {f.name}
               </button>
             </li>
           ))}

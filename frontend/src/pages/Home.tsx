@@ -33,10 +33,10 @@ export default function Home() {
             </li>
             <li className="list-group-item">
               <a
-                href="/recipes/orangeVanillaCake"
+                href="/recipes/vanillaOrangeCake"
                 className="text-decoration-none"
               >
-                {tRecipes("recipes.orangeVanillaCake")}
+                {tRecipes("recipes.vanillaOrangeCake")}
               </a>
             </li>
           </ul>

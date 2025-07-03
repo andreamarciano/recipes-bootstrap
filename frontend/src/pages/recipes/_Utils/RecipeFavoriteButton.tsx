@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-import type { User } from "../../types/user";
+import type { User } from "../../../types/user";
 
 type RecipeFavoriteButtonProps = {
   recipeId: number;
