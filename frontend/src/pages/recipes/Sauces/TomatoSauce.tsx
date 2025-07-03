@@ -10,19 +10,7 @@ import { useRecipeData } from "../_Utils/useRecipeData";
 
 export default function TomatoSauce() {
   const { title, ingredients, steps, footnotes } = useRecipeTranslation(
-    "pages/recipes/sauces/tomatoSauce",
-    [
-      "tomato",
-      "oliveOil",
-      "onion",
-      "garlic",
-      "carrot",
-      "basil",
-      "salt",
-      "sugar",
-    ],
-    ["step1", "step2", "step3", "step4", "step5"],
-    ["tomato", "time"]
+    "pages/recipes/sauces/tomatoSauce"
   );
 
   const { slug, recipe, user, favoriteRecipes, setFavoriteRecipes } =

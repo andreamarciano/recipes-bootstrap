@@ -9,20 +9,7 @@ import { useRecipeData } from "../_Utils/useRecipeData";
 
 export default function Tiramisu() {
   const { title, ingredients, steps } = useRecipeTranslation(
-    "pages/recipes/desserts/tiramisu",
-    [
-      "mascarpone",
-      "freshCream",
-      "sugar",
-      "eggs",
-      "vanillaPowder",
-      "salt",
-      "cocoaPowder",
-      "coffee",
-      "ladyfingers",
-    ],
-    ["step1", "step2", "step3", "step4", "step5", "step6", "step7"],
-    []
+    "pages/recipes/desserts/tiramisu"
   );
 
   const { slug, recipe, user, favoriteRecipes, setFavoriteRecipes } =

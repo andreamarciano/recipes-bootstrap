@@ -9,20 +9,7 @@ import { useRecipeData } from "../_Utils/useRecipeData";
 
 export default function VanillaOrangeCake() {
   const { title, ingredients, steps } = useRecipeTranslation(
-    "pages/recipes/desserts/vanillaOrangeCake",
-    [
-      "flour",
-      "sugar",
-      "vegetableOil",
-      "water",
-      "orange",
-      "eggs",
-      "bakingPowder",
-      "butter",
-      "powderedSugar",
-    ],
-    ["step1", "step2", "step3", "step4", "step5", "step6", "step7"],
-    []
+    "pages/recipes/desserts/vanillaOrangeCake"
   );
 
   const { slug, recipe, user, favoriteRecipes, setFavoriteRecipes } =
