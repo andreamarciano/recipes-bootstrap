@@ -70,6 +70,12 @@ export function useRecipeTranslation(namespace: string) {
     return { description };
   });
 
+  // Tools
+  const toolsData =
+    (t("tools", { returnObjects: true }) as Record<string, string>) ?? {};
+  const toolKeys = Object.keys(toolsData);
+  const tools: string[] = toolKeys.map((key) => toolsData[key]);
+
   // Generate Footnotes HTML
   const footnotes: string[] = footnoteKeys.map((key, i) => {
     const index = i + 1;
@@ -77,5 +83,5 @@ export function useRecipeTranslation(namespace: string) {
     return `<p id="footnote-${index}" class="footnote"><strong>${index}.</strong> ${text} <a href="#ref-${index}">↑</a></p>`;
   });
 
-  return { title, ingredients, steps, footnotes };
+  return { title, ingredients, steps, tools, footnotes };
 }

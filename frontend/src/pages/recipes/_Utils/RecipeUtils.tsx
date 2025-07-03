@@ -112,6 +112,28 @@ export function RecipeFootnotes({ children }: { children: React.ReactNode }) {
   );
 }
 
+// Tools
+export function ToolsList({ tools }: { tools: string[] }) {
+  const { t } = useTranslation(transPath);
+
+  if (tools.length === 0) return null;
+
+  return (
+    <>
+      <h2 className="custom-h2-recipe">{t("tools")}</h2>
+      <div className="mx-auto" style={{ maxWidth: "600px" }}>
+        <ul className="list-group mb-4">
+          {tools.map((tool, i) => (
+            <li key={i} className="list-group-item">
+              {tool}
+            </li>
+          ))}
+        </ul>
+      </div>
+    </>
+  );
+}
+
 // Section Wrapper
 export function SectionWrapper({ children }: { children: React.ReactNode }) {
   return (

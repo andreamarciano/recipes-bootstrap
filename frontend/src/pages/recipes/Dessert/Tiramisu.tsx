@@ -2,13 +2,14 @@ import {
   RecipeTitle,
   IngredientsList,
   ProcedureSteps,
+  ToolsList,
   SectionWrapper,
 } from "../_Utils/RecipeUtils";
 import { useRecipeTranslation } from "../_Utils/useRecipeTranslation";
 import { useRecipeData } from "../_Utils/useRecipeData";
 
 export default function Tiramisu() {
-  const { title, ingredients, steps } = useRecipeTranslation(
+  const { title, ingredients, steps, tools } = useRecipeTranslation(
     "pages/recipes/desserts/tiramisu"
   );
 
@@ -29,6 +30,10 @@ export default function Tiramisu() {
 
       <SectionWrapper>
         <IngredientsList ingredients={ingredients} />
+      </SectionWrapper>
+
+      <SectionWrapper>
+        <ToolsList tools={tools} />
       </SectionWrapper>
 
       <SectionWrapper>
