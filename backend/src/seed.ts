@@ -6,7 +6,7 @@ async function main() {
   const initialRecipes = [
     { name: "Tomato Sauce" },
     { name: "Tiramisu" },
-    { name: "Orange Vanilla Cake" },
+    { name: "Vanilla Orange Cake" },
   ];
 
   for (const recipe of initialRecipes) {

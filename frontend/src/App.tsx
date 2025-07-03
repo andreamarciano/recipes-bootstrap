@@ -60,15 +60,6 @@ function App() {
           context={{ favoriteRecipes, setFavoriteRecipes, user, recipes }}
         />
       </main>
-      <div>{favoriteRecipes}</div>
-      <div>
-        {recipes.map((r) => (
-          <li key={r.id} className="d-inline">
-            {r.name}
-            {r.id}
-          </li>
-        ))}
-      </div>
     </>
   );
 }
