@@ -17,8 +17,8 @@ router.post("/favorites", async (req: Request, res: Response) => {
     });
 
     res.status(201).json(favorite);
-  } catch (error) {
-    res.status(409).json({ error: "Already favorited or invalid data" });
+  } catch (err) {
+    res.status(409).json({ err: "Already favorited or invalid data" });
   }
 });
 
@@ -45,8 +45,8 @@ router.delete("/favorites", async (req: Request, res: Response) => {
     });
 
     res.status(200).json({ message: "Removed from favorites" });
-  } catch (error) {
-    res.status(500).json({ error: "Failed to remove favorite" });
+  } catch (err) {
+    res.status(500).json({ err: "Failed to remove favorite" });
   }
 });
 
@@ -61,7 +61,7 @@ router.delete("/favorites/all", async (req: Request, res: Response) => {
 
     res.status(200).json({ message: "Removed all favorites" });
   } catch (err) {
-    res.status(500).json({ error: "Failed to remove all favorites" });
+    res.status(500).json({ err: "Failed to remove all favorites" });
   }
 });
 

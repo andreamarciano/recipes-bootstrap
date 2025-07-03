@@ -7,10 +7,10 @@ import { useUser } from "./userContext/useUser";
 import type { Recipe } from "./types/user";
 
 function App() {
-  /* Fetch User Favorite Recipes */
   const { user } = useUser();
   const [favoriteRecipes, setFavoriteRecipes] = useState<number[]>([]);
 
+  // Fetch User Favorite Recipes
   useEffect(() => {
     const fetchFavorites = async () => {
       if (!user) {

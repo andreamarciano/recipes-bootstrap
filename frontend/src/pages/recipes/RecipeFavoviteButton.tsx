@@ -17,10 +17,7 @@ export default function RecipeFavoriteButton({
 }: RecipeFavoriteButtonProps) {
   const [loading, setLoading] = useState(false);
 
-  if (!user) {
-    alert("Please log in to manage favorites.");
-    return;
-  }
+  if (!user) return null;
 
   const isFavorite = favoriteRecipes.includes(recipeId);
 
@@ -30,6 +27,7 @@ export default function RecipeFavoriteButton({
       const token = localStorage.getItem("token");
       if (!token) {
         alert("Please log in to manage favorites.");
+        setLoading(false);
         return;
       }
 
