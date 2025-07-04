@@ -4,6 +4,8 @@ import { Eye, EyeOff } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import { useUser } from "../../../userContext/useUser";
 
+import { API_PATHS } from "../../../constants/api";
+
 interface Props {
   onSwitch: () => void;
 }
@@ -49,7 +51,7 @@ export default function RegisterForm({ onSwitch }: Props) {
     if (!validateForm()) return;
 
     try {
-      const res = await fetch(`http://localhost:4000/api/auth/register`, {
+      const res = await fetch(API_PATHS.REGISTER, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({

@@ -2,6 +2,8 @@ import { useNavigate } from "react-router-dom";
 import { Shield, LogOut, Trash2 } from "lucide-react";
 import { useUser } from "../../../userContext/useUser";
 
+import { API_PATHS } from "../../../constants/api";
+
 export default function AccountSection() {
   const navigate = useNavigate();
   const { user, logout } = useUser();
@@ -15,7 +17,7 @@ export default function AccountSection() {
 
     try {
       const token = localStorage.getItem("token");
-      const res = await fetch("http://localhost:4000/api/profile", {
+      const res = await fetch(API_PATHS.DELETE_ACCOUNT, {
         method: "DELETE",
         headers: {
           Authorization: `Bearer ${token}`,

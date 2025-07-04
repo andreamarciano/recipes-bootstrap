@@ -4,6 +4,8 @@ import { Eye, EyeOff } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import { useUser } from "../../../userContext/useUser";
 
+import { API_PATHS } from "../../../constants/api";
+
 interface Props {
   onSwitch: () => void;
 }
@@ -19,7 +21,7 @@ export default function LoginForm({ onSwitch }: Props) {
 
   const handleLogin = async () => {
     try {
-      const res = await fetch(`http://localhost:4000/api/auth/login`, {
+      const res = await fetch(API_PATHS.LOGIN, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ username, password }),

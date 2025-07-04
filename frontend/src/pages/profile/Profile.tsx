@@ -9,6 +9,8 @@ import FavoriteSection from "./section/FavoriteSection";
 
 import type { Favorite, SectionType } from "../../types/user";
 
+import { API_PATHS } from "../../constants/api";
+
 export default function Profile() {
   const { user } = useUser();
 
@@ -28,7 +30,7 @@ export default function Profile() {
         const token = localStorage.getItem("token");
 
         // Fetch Favorites
-        const favRes = await fetch("http://localhost:4000/api/user/favorites", {
+        const favRes = await fetch(API_PATHS.FAVORITE_RECIPES, {
           headers: { Authorization: `Bearer ${token}` },
         });
         const favData = await favRes.json();
@@ -50,7 +52,7 @@ export default function Profile() {
     try {
       const token = localStorage.getItem("token");
 
-      await fetch("http://localhost:4000/api/user/favorites/all", {
+      await fetch(API_PATHS.REMOVE_ALL_FAVORITES, {
         method: "DELETE",
         headers: { Authorization: `Bearer ${token}` },
       });

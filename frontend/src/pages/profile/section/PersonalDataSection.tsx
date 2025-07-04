@@ -1,6 +1,8 @@
 import { useUser } from "../../../userContext/useUser";
 import { ClipboardList, Mail } from "lucide-react";
 
+import { API_PATHS } from "../../../constants/api";
+
 interface PersonalDataProps {
   newEmail: string;
   setNewEmail: (email: string) => void;
@@ -21,7 +23,7 @@ export default function PersonalDataSection({
   const handleEmailChange = async () => {
     try {
       const token = localStorage.getItem("token");
-      const res = await fetch("http://localhost:4000/api/profile/email", {
+      const res = await fetch(API_PATHS.UPDATE_EMAIL, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",

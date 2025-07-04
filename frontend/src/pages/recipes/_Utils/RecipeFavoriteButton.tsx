@@ -9,6 +9,8 @@ type RecipeFavoriteButtonProps = {
   setFavoriteRecipes: React.Dispatch<React.SetStateAction<number[]>>;
 };
 
+import { API_PATHS } from "../../../constants/api";
+
 export default function RecipeFavoriteButton({
   recipeId,
   user,
@@ -33,7 +35,7 @@ export default function RecipeFavoriteButton({
 
       if (isFavorite) {
         // REMOVE
-        await fetch("http://localhost:4000/api/user/favorites", {
+        await fetch(API_PATHS.FAVORITE_RECIPES, {
           method: "DELETE",
           headers: {
             "Content-Type": "application/json",
@@ -44,7 +46,7 @@ export default function RecipeFavoriteButton({
         setFavoriteRecipes((prev) => prev.filter((id) => id !== recipeId));
       } else {
         // ADD
-        await fetch("http://localhost:4000/api/user/favorites", {
+        await fetch(API_PATHS.FAVORITE_RECIPES, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
