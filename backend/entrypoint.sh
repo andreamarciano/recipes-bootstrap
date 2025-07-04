@@ -1,5 +1,8 @@
 #!/bin/sh
 
+echo "⚙️ Generating Prisma client..."
+npx prisma generate
+
 echo "⏳ Applying Prisma DB migrations..."
 npx prisma migrate deploy
 
