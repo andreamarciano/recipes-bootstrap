@@ -3,6 +3,7 @@ import {
   IngredientsList,
   ProcedureSteps,
   ToolsList,
+  RecipeFootnotes,
   SectionWrapper,
   RecipeNotFound,
 } from "../_Utils/RecipeUtils";
@@ -10,9 +11,9 @@ import UserComments from "../_Utils/RecipeComments";
 import { useRecipeTranslation } from "../_Utils/useRecipeTranslation";
 import { useRecipeData } from "../_Utils/useRecipeData";
 
-export default function VanillaOrangeCake() {
-  const { title, ingredients, tools, steps } = useRecipeTranslation(
-    "pages/recipes/desserts/vanillaOrangeCake"
+export default function Pesto() {
+  const { title, ingredients, tools, steps, footnotes } = useRecipeTranslation(
+    "pages/recipes/sauces/pesto"
   );
 
   const { slug, recipe, user, favoriteRecipes, setFavoriteRecipes } =
@@ -46,6 +47,15 @@ export default function VanillaOrangeCake() {
       {/* Procedure */}
       <SectionWrapper>
         <ProcedureSteps steps={steps} />
+      </SectionWrapper>
+
+      {/* Footnotes */}
+      <SectionWrapper>
+        <RecipeFootnotes>
+          {footnotes.map((note, i) => (
+            <div key={i} dangerouslySetInnerHTML={{ __html: note }} />
+          ))}
+        </RecipeFootnotes>
       </SectionWrapper>
 
       {/* Comments */}

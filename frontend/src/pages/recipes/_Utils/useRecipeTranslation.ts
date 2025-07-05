@@ -83,5 +83,5 @@ export function useRecipeTranslation(namespace: string) {
     return `<p id="footnote-${index}" class="footnote"><strong>${index}.</strong> ${text} <a href="#ref-${index}">↑</a></p>`;
   });
 
-  return { title, ingredients, steps, tools, footnotes };
+  return { title, ingredients, tools, steps, footnotes };
 }

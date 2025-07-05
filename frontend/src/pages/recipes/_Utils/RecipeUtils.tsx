@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
 import type { Ingredient, Step } from "../../../types/recipes";
@@ -140,5 +141,28 @@ export function SectionWrapper({ children }: { children: React.ReactNode }) {
     <section className="my-5 py-4 border-top border-secondary-subtle">
       {children}
     </section>
+  );
+}
+
+// Recipe Not Found
+export function RecipeNotFound() {
+  const { t } = useTranslation(transPath);
+
+  return (
+    <div className="container text-center py-5">
+      <h2 className="display-4 text-danger">{t("title")}</h2>
+      <p className="lead">{t("description")}</p>
+
+      <div className="d-flex justify-content-center gap-3 mt-4">
+        <Link to="/" className="btn btn-outline-secondary">
+          <i className="bi bi-house-door" aria-hidden="true"></i>{" "}
+          {t("linkHome")}
+        </Link>
+        <Link to="/recipes/all" className="btn btn-outline-light">
+          <i className="bi bi-card-list" aria-hidden="true"></i>{" "}
+          {t("linkAllRecipes")}
+        </Link>
+      </div>
+    </div>
   );
 }

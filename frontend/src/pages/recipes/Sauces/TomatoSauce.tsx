@@ -4,6 +4,7 @@ import {
   ProcedureSteps,
   RecipeFootnotes,
   SectionWrapper,
+  RecipeNotFound,
 } from "../_Utils/RecipeUtils";
 import UserComments from "../_Utils/RecipeComments";
 import { useRecipeTranslation } from "../_Utils/useRecipeTranslation";
@@ -16,10 +17,13 @@ export default function TomatoSauce() {
 
   const { slug, recipe, user, favoriteRecipes, setFavoriteRecipes } =
     useRecipeData();
-  if (!slug || !recipe) return <p>Recipe not found</p>;
+
+  // Recipe Not Found
+  if (!slug || !recipe) return <RecipeNotFound />;
 
   return (
     <article className="mx-auto px-3 my-4" style={{ maxWidth: 750 }}>
+      {/* Title */}
       <RecipeTitle
         recipeId={recipe.id}
         user={user}
@@ -29,14 +33,17 @@ export default function TomatoSauce() {
         {title}
       </RecipeTitle>
 
+      {/* Ingredient */}
       <SectionWrapper>
         <IngredientsList ingredients={ingredients} />
       </SectionWrapper>
 
+      {/* Procedure */}
       <SectionWrapper>
         <ProcedureSteps steps={steps} />
       </SectionWrapper>
 
+      {/* Footnotes */}
       <SectionWrapper>
         <RecipeFootnotes>
           {footnotes.map((note, i) => (
@@ -45,6 +52,7 @@ export default function TomatoSauce() {
         </RecipeFootnotes>
       </SectionWrapper>
 
+      {/* Comments */}
       <SectionWrapper>
         <UserComments recipeId={recipe.id} />
       </SectionWrapper>

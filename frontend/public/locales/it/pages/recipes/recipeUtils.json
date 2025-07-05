@@ -1,4 +1,8 @@
 {
+  "title": "Ricetta non trovata",
+  "description": "La ricetta che stai cercando non esiste.",
+  "linkHome": "Vai alla Home",
+  "linkAllRecipes": "Tutte le ricette",
   "ingredients": "Ingredienti",
   "procedure": "Procedimento",
   "notes": "Note",

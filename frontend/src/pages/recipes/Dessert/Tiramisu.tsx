@@ -4,22 +4,26 @@ import {
   ProcedureSteps,
   ToolsList,
   SectionWrapper,
+  RecipeNotFound,
 } from "../_Utils/RecipeUtils";
 import UserComments from "../_Utils/RecipeComments";
 import { useRecipeTranslation } from "../_Utils/useRecipeTranslation";
 import { useRecipeData } from "../_Utils/useRecipeData";
 
 export default function Tiramisu() {
-  const { title, ingredients, steps, tools } = useRecipeTranslation(
+  const { title, ingredients, tools, steps } = useRecipeTranslation(
     "pages/recipes/desserts/tiramisu"
   );
 
   const { slug, recipe, user, favoriteRecipes, setFavoriteRecipes } =
     useRecipeData();
-  if (!slug || !recipe) return <p>Recipe not found</p>;
+
+  // Recipe Not Found
+  if (!slug || !recipe) return <RecipeNotFound />;
 
   return (
     <article className="mx-auto px-3 my-4" style={{ maxWidth: 750 }}>
+      {/* Title */}
       <RecipeTitle
         recipeId={recipe.id}
         user={user}
@@ -29,18 +33,22 @@ export default function Tiramisu() {
         {title}
       </RecipeTitle>
 
+      {/* Ingredient */}
       <SectionWrapper>
         <IngredientsList ingredients={ingredients} />
       </SectionWrapper>
 
+      {/* Tools */}
       <SectionWrapper>
         <ToolsList tools={tools} />
       </SectionWrapper>
 
+      {/* Procedure */}
       <SectionWrapper>
         <ProcedureSteps steps={steps} />
       </SectionWrapper>
 
+      {/* Comments */}
       <SectionWrapper>
         <UserComments recipeId={recipe.id} />
       </SectionWrapper>
