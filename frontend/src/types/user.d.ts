@@ -15,3 +15,12 @@ export type Favorite = {
 };
 
 export type SectionType = "personal" | "account" | "favorites";
+
+export type Comment = {
+  id: number;
+  content: string;
+  createdAt: string;
+  updatedAt: string;
+  username: string;
+  likesCount: number;
+};

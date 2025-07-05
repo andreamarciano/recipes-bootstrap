@@ -5,6 +5,7 @@ import {
   RecipeFootnotes,
   SectionWrapper,
 } from "../_Utils/RecipeUtils";
+import UserComments from "../_Utils/RecipeComments";
 import { useRecipeTranslation } from "../_Utils/useRecipeTranslation";
 import { useRecipeData } from "../_Utils/useRecipeData";
 
@@ -42,6 +43,10 @@ export default function TomatoSauce() {
             <div key={i} dangerouslySetInnerHTML={{ __html: note }} />
           ))}
         </RecipeFootnotes>
+      </SectionWrapper>
+
+      <SectionWrapper>
+        <UserComments recipeId={recipe.id} />
       </SectionWrapper>
     </article>
   );
