@@ -24,7 +24,7 @@ const sections: {
   },
   {
     key: "favorites",
-    label: "My Favorite Languages",
+    label: "My Favorite Recipes",
     icon: <Star size={20} className="text-warning" />,
   },
 ];
@@ -34,7 +34,10 @@ export default function ProfileSidebar({
   onSelect,
 }: ProfileSidebarProps) {
   return (
-    <aside className="bg-secondary p-3 border-end d-flex flex-column justify-content-center" style={{ width: "250px" }}>
+    <aside
+      className="bg-secondary p-3 border-end d-flex flex-column justify-content-center"
+      style={{ width: "250px" }}
+    >
       {sections.map(({ key, label, icon }) => (
         <button
           key={key}
