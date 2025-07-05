@@ -90,6 +90,7 @@ export default function RegisterForm({ onSwitch }: Props) {
       {/* Switch Menu */}
       <p className="text-muted mb-3">
         {t("registerForm.haveAccount")}
+        <span> </span>
         <button
           onClick={onSwitch}
           type="button"

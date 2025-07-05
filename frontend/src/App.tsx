@@ -44,7 +44,6 @@ function App() {
         });
 
         const data = await res.json();
-        console.log("Favorite recipes data:", data);
         setFavoriteRecipes(data.map((r: Recipe) => r.id));
       } catch (err) {
         console.error("Error loading favorites:", err);

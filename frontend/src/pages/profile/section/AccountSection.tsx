@@ -54,7 +54,7 @@ export default function AccountSection() {
             className="btn btn-outline-light d-flex align-items-center gap-2"
             onClick={logout}
           >
-            <LogOut size={20} />
+            <LogOut size={20} className="logout" />
             Logout
           </button>
 

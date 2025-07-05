@@ -52,6 +52,7 @@ export default function LoginForm({ onSwitch }: Props) {
       {/* Switch Menu */}
       <p className="text-muted mb-3">
         {t("loginForm.noAccount")}
+        <span> </span>
         <button
           onClick={onSwitch}
           type="button"
