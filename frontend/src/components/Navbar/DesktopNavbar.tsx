@@ -2,7 +2,7 @@ import { useState } from "react";
 import { NavLink } from "react-router-dom";
 
 import useNavbar from "./useNavbar";
-
+import Searchbar from "./Searchbar";
 import { useUser } from "../../userContext/useUser";
 import SignIn from "./Login/SignIn";
 import SignedInMenu from "./Login/SignedInMenu";
@@ -75,28 +75,10 @@ export default function DesktopNavbar() {
             </ul>
 
             {/* Search bar */}
-            <form
-              className="d-flex mx-auto my-3 my-lg-0 position-absolute start-50 translate-middle-x"
-              role="search"
+            <Searchbar
+              className="mx-auto my-3 my-lg-0 position-absolute start-50 translate-middle-x"
               style={{ maxWidth: 400, width: "100%" }}
-              onSubmit={(e) => e.preventDefault()}
-            >
-              <input
-                className="form-control me-2"
-                type="search"
-                placeholder={t("search")}
-                aria-label={t("search")}
-                style={{ minWidth: 0 }}
-              />
-              <button
-                className="btn btn-outline-light"
-                type="submit"
-                aria-label={t("search")}
-                title={t("search")}
-              >
-                <i className="bi bi-search"></i>
-              </button>
-            </form>
+            />
 
             {/* Language toggle + Login */}
             <div className="d-none d-lg-flex align-items-center gap-2">

@@ -2,7 +2,7 @@ import { useState } from "react";
 import { NavLink } from "react-router-dom";
 
 import useNavbar from "./useNavbar";
-
+import Searchbar from "./Searchbar";
 import { useUser } from "../../userContext/useUser";
 import SignIn from "./Login/SignIn";
 import SignedInMenu from "./Login/SignedInMenu";
@@ -29,28 +29,10 @@ export default function MobileNavbar() {
           </NavLink>
 
           {/* Search bar */}
-          <form
-            className="d-flex mx-auto"
-            role="search"
+          <Searchbar
+            className="mx-auto"
             style={{ maxWidth: 300, width: "50%" }}
-            onSubmit={(e) => e.preventDefault()}
-          >
-            <input
-              className="form-control me-2"
-              type="search"
-              placeholder={t("search")}
-              aria-label={t("search")}
-              style={{ minWidth: 0 }}
-            />
-            <button
-              className="btn btn-outline-light"
-              type="submit"
-              aria-label={t("search")}
-              title={t("search")}
-            >
-              <i className="bi bi-search" aria-hidden="true"></i>
-            </button>
-          </form>
+          />
 
           {/* Toggler button for offcanvas */}
           <button
@@ -142,27 +124,7 @@ export default function MobileNavbar() {
           </ul>
 
           {/* Search bar */}
-          <form
-            className="d-flex mb-3"
-            role="search"
-            onSubmit={(e) => e.preventDefault()}
-          >
-            <input
-              className="form-control me-2"
-              type="search"
-              placeholder={t("search")}
-              aria-label={t("search")}
-              style={{ minWidth: 0 }}
-            />
-            <button
-              className="btn btn-outline-light"
-              type="submit"
-              aria-label={t("search")}
-              title={t("search")}
-            >
-              <i className="bi bi-search" aria-hidden="true"></i>
-            </button>
-          </form>
+          <Searchbar className="mb-3" />
 
           {/* Language toggle + Login */}
           <div className="d-flex flex-column gap-2 justify-content-center">
