@@ -37,6 +37,12 @@
           "items": {
             "$ref": "#/definitions/CommentLike"
           }
+        },
+        "Note": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Note"
+          }
         }
       }
     },
@@ -60,6 +66,12 @@
           "items": {
             "$ref": "#/definitions/Comment"
           }
+        },
+        "Note": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Note"
+          }
         }
       }
     },
@@ -68,6 +80,23 @@
       "properties": {
         "id": {
           "type": "integer"
+        },
+        "user": {
+          "$ref": "#/definitions/User"
+        },
+        "recipe": {
+          "$ref": "#/definitions/Recipe"
+        }
+      }
+    },
+    "Note": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "content": {
+          "type": "string"
         },
         "user": {
           "$ref": "#/definitions/User"
@@ -137,6 +166,9 @@
     },
     "favoriteRecipe": {
       "$ref": "#/definitions/FavoriteRecipe"
+    },
+    "note": {
+      "$ref": "#/definitions/Note"
     },
     "comment": {
       "$ref": "#/definitions/Comment"

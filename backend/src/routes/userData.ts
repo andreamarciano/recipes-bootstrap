@@ -65,4 +65,98 @@ router.delete("/favorites/all", async (req: Request, res: Response) => {
   }
 });
 
+/* NOTES */
+
+// Save or Update a User note about a recipe
+router.post("/notes", async (req: Request, res: Response) => {
+  const userId = (req as AuthRequest).userId;
+  const { recipeId, content } = req.body;
+
+  const existing = await prisma.note.findFirst({
+    where: { userId, recipeId },
+  });
+
+  if (existing) {
+    const updated = await prisma.note.update({
+      where: { id: existing.id },
+      data: { content },
+    });
+    res.json(updated);
+  } else {
+    const created = await prisma.note.create({
+      data: { userId, recipeId, content },
+    });
+    res.status(201).json(created);
+  }
+});
+
+// Retrieve an existing note
+router.get("/notes", async (req: Request, res: Response) => {
+  const userId = (req as AuthRequest).userId;
+  const recipeId = parseInt(req.query.recipeId as string);
+
+  const note = await prisma.note.findFirst({
+    where: { userId, recipeId },
+  });
+
+  res.json(note || { content: "" });
+});
+
+// Retrieve all user notes
+router.get("/notes/all", async (req: Request, res: Response) => {
+  const userId = (req as AuthRequest).userId;
+
+  const notes = await prisma.note.findMany({
+    where: { userId },
+    include: { recipe: true },
+  });
+
+  res.json(notes);
+});
+
+// Remove all notes
+router.delete("/notes/all", async (req: Request, res: Response) => {
+  const userId = (req as AuthRequest).userId;
+
+  try {
+    await prisma.note.deleteMany({
+      where: { userId },
+    });
+
+    res.status(200).json({ message: "Removed all notes" });
+  } catch (err) {
+    res.status(500).json({ error: "Failed to remove all notes" });
+  }
+});
+
+// Remove one note
+router.delete("/notes/:recipeId", async (req: Request, res: Response) => {
+  const userId = (req as AuthRequest).userId;
+  const recipeId = parseInt(req.params.recipeId);
+
+  if (!recipeId) {
+    res.status(400).json({ error: "Missing recipeId" });
+    return;
+  }
+
+  try {
+    const note = await prisma.note.findFirst({
+      where: { userId, recipeId },
+    });
+
+    if (!note) {
+      res.status(404).json({ error: "Note not found" });
+      return;
+    }
+
+    await prisma.note.delete({
+      where: { id: note.id },
+    });
+
+    res.status(200).json({ message: "Note removed" });
+  } catch (err) {
+    res.status(500).json({ error: "Failed to remove note" });
+  }
+});
+
 export default router;

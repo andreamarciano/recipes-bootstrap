@@ -21,6 +21,7 @@ model User {
   favorite    FavoriteRecipe[]
   comment     Comment[]
   commentLike CommentLike[]
+  Note        Note[]
 }
 
 model Recipe {
@@ -28,6 +29,7 @@ model Recipe {
   name     String           @unique
   favorite FavoriteRecipe[]
   comment  Comment[]
+  Note     Note[]
 }
 
 model FavoriteRecipe {
@@ -38,6 +40,15 @@ model FavoriteRecipe {
   recipe   Recipe @relation(fields: [recipeId], references: [id])
 
   @@unique([userId, recipeId])
+}
+
+model Note {
+  id       Int    @id @default(autoincrement())
+  content  String
+  userId   Int
+  recipeId Int
+  user     User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+  recipe   Recipe @relation(fields: [recipeId], references: [id])
 }
 
 model Comment {
