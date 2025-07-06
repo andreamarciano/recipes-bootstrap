@@ -2,8 +2,9 @@ import { useState, useEffect, type FormEvent } from "react";
 import { useNavigate } from "react-router-dom";
 
 import useNavbar from "./useNavbar";
+import { API_PATHS } from "../../constants/api";
 
-type Props = {
+type SearchbarProps = {
   className?: string;
   style?: React.CSSProperties;
 };
@@ -13,49 +14,55 @@ type RecipeSuggestion = {
   slug: string;
 };
 
-export default function Searchbar({ className = "", style = {} }: Props) {
+export default function Searchbar({
+  className = "",
+  style = {},
+}: SearchbarProps) {
   const navigate = useNavigate();
   const { t } = useNavbar();
 
   const [query, setQuery] = useState("");
   const [suggestions, setSuggestions] = useState<RecipeSuggestion[]>([]);
+  const [active, setActive] = useState(true);
 
   // Fetch live suggestions
   useEffect(() => {
+    const controller = new AbortController();
+
     const fetchSuggestions = async () => {
-      if (!query.trim()) {
+      if (!query.trim() || !active) {
         setSuggestions([]);
         return;
       }
 
       try {
-        const res = await fetch(
-          `http://localhost:4000/api/recipes/search?query=${encodeURIComponent(
-            query
-          )}`
-        );
+        const res = await fetch(API_PATHS.SEARCH_RECIPES(query), {
+          signal: controller.signal,
+        });
         const data = await res.json();
         setSuggestions(data);
       } catch (err) {
+        if (err instanceof DOMException && err.name === "AbortError") return;
+
         console.error("Suggestion fetch failed:", err);
         setSuggestions([]);
       }
     };
 
     const timeout = setTimeout(fetchSuggestions, 300); // debounce
-    return () => clearTimeout(timeout);
-  }, [query]);
+    return () => {
+      clearTimeout(timeout);
+      controller.abort(); // delete previous fetch
+    };
+  }, [query, active]);
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
-    const match = suggestions.find(
-      (r) => r.name.toLowerCase() === query.trim().toLowerCase()
-    );
-    if (match) {
-      navigate(`/recipes/${match.slug}`);
-    } else {
-      navigate("/not-found");
-    }
+    if (query.trim().length === 0) return;
+
+    setActive(false);
+    setSuggestions([]);
+    navigate(`/search?query=${encodeURIComponent(query.trim())}`);
   };
 
   const handleSuggestionClick = (slug: string) => {
@@ -78,7 +85,10 @@ export default function Searchbar({ className = "", style = {} }: Props) {
         aria-label={t("search")}
         maxLength={25}
         value={query}
-        onChange={(e) => setQuery(e.target.value)}
+        onChange={(e) => {
+          setActive(true);
+          setQuery(e.target.value);
+        }}
         style={{ minWidth: 0 }}
         autoComplete="off"
       />

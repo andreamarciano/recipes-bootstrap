@@ -8,6 +8,8 @@ export const API_PATHS = {
 
   /* RECIPES ROUTES */
   RECIPES: `${BASE_URL}/api/recipes`, // Fetch all recipes
+  SEARCH_RECIPES: (query: string) =>
+    `${BASE_URL}/api/recipes/search?query=${encodeURIComponent(query)}`,
 
   /* USERDATA ROUTES */
   FAVORITE_RECIPES: `${BASE_URL}/api/user/favorites`, // Fetch/Toggle User favorite recipes

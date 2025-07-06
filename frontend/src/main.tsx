@@ -14,6 +14,7 @@ import App from "./App.tsx";
 import Home from "./pages/Home.tsx";
 import Recipes from "./pages/Recipes.tsx";
 import RecipePage from "./pages/recipes/RecipePage.tsx";
+import SearchResults from "./pages/SearchResult.tsx";
 import NotFound from "./pages/NotFound.tsx";
 
 import { ProtectedRoute } from "./pages/profile/ProtectedRoute.tsx";
@@ -27,6 +28,7 @@ const router = createBrowserRouter([
       { index: true, element: <Home /> },
       { path: "recipes/all", element: <Recipes /> },
       { path: "recipes/:slug", element: <RecipePage /> },
+      { path: "search", element: <SearchResults /> },
       { path: "*", element: <NotFound /> },
     ],
   },
