@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import { Star, Trash2 } from "lucide-react";
 
 import type { Favorite } from "../../../types/user";
@@ -13,6 +14,7 @@ export default function FavoriteSection({
   onRemoveAll,
 }: FavoriteSectionProps) {
   const navigate = useNavigate();
+  const { t } = useTranslation("pages/profile");
 
   const nameToSlug = (name: string) => {
     const words = name.split(" ");
@@ -33,7 +35,7 @@ export default function FavoriteSection({
       <div className="d-flex align-items-center justify-content-between mb-4">
         <h2 className="fs-4 fw-bold d-flex align-items-center gap-2">
           <Star size={24} className="text-warning" />
-          My Favorite Recipes
+          {t("favorite.title")}
         </h2>
         {favorites.length > 0 && (
           <button
@@ -41,13 +43,13 @@ export default function FavoriteSection({
             className="btn btn-danger btn-sm d-flex align-items-center gap-1"
           >
             <Trash2 size={16} />
-            Clear All
+            {t("favorite.clear")}
           </button>
         )}
       </div>
 
       {favorites.length === 0 ? (
-        <p className="text-muted fst-italic">No favorite recipes found.</p>
+        <p className="text-muted fst-italic">{t("favorite.noFav")}</p>
       ) : (
         <ul className="list-unstyled">
           {favorites.map((f) => (

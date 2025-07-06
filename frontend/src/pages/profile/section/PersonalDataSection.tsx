@@ -1,5 +1,7 @@
-import { useUser } from "../../../userContext/useUser";
+import { useTranslation } from "react-i18next";
 import { ClipboardList, Mail } from "lucide-react";
+
+import { useUser } from "../../../userContext/useUser";
 
 import { API_PATHS } from "../../../constants/api";
 
@@ -16,6 +18,8 @@ export default function PersonalDataSection({
   emailMessage,
   setEmailMessage,
 }: PersonalDataProps) {
+  const { t } = useTranslation("pages/profile");
+
   const { user, setUser } = useUser();
   if (!user) return null;
 
@@ -40,7 +44,7 @@ export default function PersonalDataSection({
         "user",
         JSON.stringify({ ...user, email: data.email })
       );
-      setEmailMessage("Email updated successfully");
+      setEmailMessage(t("personal.success"));
     } catch (err) {
       setEmailMessage(`${err}`);
     }
@@ -52,7 +56,7 @@ export default function PersonalDataSection({
       style={{ maxWidth: "768px" }}
     >
       <h2 className="fs-3 fw-bold mb-4 d-flex align-items-center gap-2">
-        <ClipboardList size={24} /> Personal Data
+        <ClipboardList size={24} /> {t("personal.title")}
       </h2>
 
       {/* User Info */}
@@ -60,24 +64,24 @@ export default function PersonalDataSection({
         <div className="col">
           <p className="d-flex align-items-center gap-2">
             <Mail size={20} className="text-primary" />
-            <strong>Email:</strong> {user.email}
+            <strong>{t("personal.email")}</strong> {user.email}
           </p>
         </div>
       </div>
 
       {/* Email Update Form */}
       <div className="bg-dark p-3 rounded-3 mb-4">
-        <h3 className="fs-5 fw-semibold mb-3">📨 Update Email</h3>
+        <h3 className="fs-5 fw-semibold mb-3">{t("personal.updateEmail")}</h3>
         <div className="mb-3">
           <input
             type="email"
             value={newEmail}
             onChange={(e) => setNewEmail(e.target.value)}
-            placeholder="Enter new email"
+            placeholder={t("personal.emailPlaceholder")}
             className="form-control"
           />
           <button onClick={handleEmailChange} className="btn btn-primary mt-2">
-            Update Email
+            {t("personal.update")}
           </button>
           {emailMessage && (
             <p

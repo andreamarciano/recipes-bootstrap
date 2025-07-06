@@ -1,0 +1,40 @@
+{
+  "personal": {
+    "success": "Email updated successfully",
+    "title": "Personal Data",
+    "email": "Email:",
+    "updateEmail": "📨 Update Email",
+    "emailPlaceholder": "Enter new email",
+    "update": "Update"
+  },
+  "account": {
+    "confirm": "Are you sure you want to delete your account? This action is irreversible.",
+    "error": "Error deleting account.",
+    "title": "Account",
+    "username": "Username:",
+    "logout": "Logout",
+    "delete": "Delete Account"
+  },
+  "favorite": {
+    "title": "My Favorite Recipes",
+    "clear": "Clear All",
+    "noFav": "No favorite recipes found."
+  },
+  "notes": {
+    "title": "My Notes",
+    "clear": "Clear All",
+    "noNotes": "No notes found."
+  },
+  "protected": {
+    "loading": "Loading..."
+  },
+  "sidebar": {
+    "personal": "Personal Data",
+    "account": "Account",
+    "favorites": "My Favorite Recipes",
+    "notes": "My Notes"
+  },
+  "navbar": {
+    "home": "← Home"
+  }
+}

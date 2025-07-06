@@ -1,0 +1,40 @@
+{
+  "personal": {
+    "success": "Email aggiornata con successo",
+    "title": "Dati Personali",
+    "email": "Email:",
+    "updateEmail": "📨 Aggiorna Email",
+    "emailPlaceholder": "Inserisci la nuova email",
+    "update": "Aggiorna"
+  },
+  "account": {
+    "confirm": "Sei sicuro di voler eliminare il tuo account? Questa azione è irreversibile.",
+    "error": "Errore durante l'eliminazione dell'account.",
+    "title": "Account",
+    "username": "Nome Utente:",
+    "logout": "Disconnetti",
+    "delete": "Elimina Account"
+  },
+  "favorite": {
+    "title": "Le Mie Ricette Preferite",
+    "clear": "Cancella Tutto",
+    "noFav": "Nessuna ricetta preferita trovata."
+  },
+  "notes": {
+    "title": "Le Mie Note",
+    "clear": "Cancella Tutto",
+    "noNotes": "Nessuna nota trovata."
+  },
+  "protected": {
+    "loading": "Caricamento..."
+  },
+  "sidebar": {
+    "personal": "Dati Personali",
+    "account": "Account",
+    "favorites": "Le Mie Ricette Preferite",
+    "notes": "Le Mie Note"
+  },
+  "navbar": {
+    "home": "← Home"
+  }
+}

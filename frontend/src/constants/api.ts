@@ -11,9 +11,24 @@ export const API_PATHS = {
 
   /* USERDATA ROUTES */
   FAVORITE_RECIPES: `${BASE_URL}/api/user/favorites`, // Fetch/Toggle User favorite recipes
-  REMOVE_ALL_FAVORITES: `${BASE_URL}/api/user/favorites/all`, // Remove all favorites
+  REMOVE_ALL_FAVORITES: `${BASE_URL}/api/user/favorites/all`,
 
   /* PROFILE ROUTES */
-  DELETE_ACCOUNT: `${BASE_URL}/api/profile`, // Delete User Account
-  UPDATE_EMAIL: `${BASE_URL}/api/profile/email`, // Update Email
+  DELETE_ACCOUNT: `${BASE_URL}/api/profile`,
+  UPDATE_EMAIL: `${BASE_URL}/api/profile/email`,
+
+  /* NOTES ROUTES */
+  GET_NOTE: (recipeId: number) =>
+    `${BASE_URL}/api/user/notes?recipeId=${recipeId}`,
+  SAVE_NOTE: `${BASE_URL}/api/user/notes`,
+  DELETE_NOTE: (recipeId: number) => `${BASE_URL}/api/user/notes/${recipeId}`,
+  ALL_NOTES: `${BASE_URL}/api/user/notes/all`, // Fetch/Delete all User notes
+
+  /* COMMENTS ROUTES */
+  GET_COMMENTS: (recipeId: number) => `${BASE_URL}/api/comment/${recipeId}`,
+  CREATE_COMMENT: `${BASE_URL}/api/comment`,
+  DELETE_COMMENT: (id: number) => `${BASE_URL}/api/comment/${id}`,
+  EDIT_COMMENT: (editingId: number) => `${BASE_URL}/api/comment/${editingId}`,
+  TOGGLE_LIKE: (commentId: number) =>
+    `${BASE_URL}/api/comment/${commentId}/like`,
 };

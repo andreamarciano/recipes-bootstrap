@@ -72,6 +72,20 @@ router.post("/notes", async (req: Request, res: Response) => {
   const userId = (req as AuthRequest).userId;
   const { recipeId, content } = req.body;
 
+  const MAX_NOTE_LENGTH = 500;
+
+  if (!recipeId || typeof content !== "string") {
+    res.status(400).json({ error: "Missing or invalid input." });
+    return;
+  }
+
+  if (content.length > MAX_NOTE_LENGTH) {
+    res.status(400).json({
+      error: `Note content must be under ${MAX_NOTE_LENGTH} characters.`,
+    });
+    return;
+  }
+
   const existing = await prisma.note.findFirst({
     where: { userId, recipeId },
   });

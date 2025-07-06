@@ -6,8 +6,9 @@ import ProfileSidebar from "./comp/ProfileSidebar";
 import PersonalDataSection from "./section/PersonalDataSection";
 import AccountSection from "./section/AccountSection";
 import FavoriteSection from "./section/FavoriteSection";
+import NoteSection from "./section/NoteSection";
 
-import type { Favorite, SectionType } from "../../types/user";
+import type { Favorite, SectionType, Note } from "../../types/user";
 
 import { API_PATHS } from "../../constants/api";
 
@@ -18,6 +19,7 @@ export default function Profile() {
 
   // User Data
   const [favorites, setFavorites] = useState<Favorite[]>([]);
+  const [notes, setNotes] = useState<Note[]>([]);
 
   // User Actions
   const [newEmail, setNewEmail] = useState(user?.email || "");
@@ -35,6 +37,13 @@ export default function Profile() {
         });
         const favData = await favRes.json();
         setFavorites(favData);
+
+        // Fetch Notes
+        const notesRes = await fetch(API_PATHS.ALL_NOTES, {
+          headers: { Authorization: `Bearer ${token}` },
+        });
+        const notesData = await notesRes.json();
+        setNotes(notesData);
       } catch (err) {
         console.error("Error fetching user data:", err);
       }
@@ -44,6 +53,26 @@ export default function Profile() {
   }, []);
 
   /* Delete User Data */
+
+  const deleteAllNotes = async () => {
+    const confirm = window.confirm(
+      "Are you sure you want to delete all notes?"
+    );
+    if (!confirm) return;
+
+    try {
+      const token = localStorage.getItem("token");
+
+      await fetch(API_PATHS.ALL_NOTES, {
+        method: "DELETE",
+        headers: { Authorization: `Bearer ${token}` },
+      });
+
+      setNotes([]);
+    } catch (err) {
+      console.error("Error deleting all notes: ", err);
+    }
+  };
 
   const removeAllFavorites = async () => {
     const confirm = window.confirm("Are you sure you to remove all favorites?");
@@ -66,7 +95,7 @@ export default function Profile() {
   return (
     <div className="d-flex min-vh-100 bg-dark text-white">
       {/* Navbar */}
-      <ProfileNavbar favorites={favorites} />
+      <ProfileNavbar />
 
       {/* Sidebar */}
       <ProfileSidebar currentSection={section} onSelect={setSection} />
@@ -91,6 +120,11 @@ export default function Profile() {
             favorites={favorites}
             onRemoveAll={removeAllFavorites}
           />
+        )}
+
+        {/* Notes */}
+        {section === "notes" && (
+          <NoteSection notes={notes} onDeleteAll={deleteAllNotes} />
         )}
       </main>
     </div>

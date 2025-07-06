@@ -14,7 +14,14 @@ export type Favorite = {
   name: string;
 };
 
-export type SectionType = "personal" | "account" | "favorites";
+export type Note = {
+  id: number;
+  content: string;
+  recipe: {
+    id: number;
+    name: string;
+  };
+};
 
 export type Comment = {
   id: number;
@@ -24,3 +31,5 @@ export type Comment = {
   username: string;
   likesCount: number;
 };
+
+export type SectionType = "personal" | "account" | "favorites" | "notes";

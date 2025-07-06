@@ -7,6 +7,7 @@ import {
   RecipeNotFound,
 } from "../_Utils/RecipeUtils";
 import UserComments from "../_Utils/RecipeComments";
+import RecipeNotes from "../_Utils/RecipeNotes";
 import { useRecipeTranslation } from "../_Utils/useRecipeTranslation";
 import { useRecipeData } from "../_Utils/useRecipeData";
 
@@ -32,6 +33,9 @@ export default function Tiramisu() {
       >
         {title}
       </RecipeTitle>
+
+      {/* User Notes */}
+      {user && <RecipeNotes user={user} recipeId={recipe.id} />}
 
       {/* Ingredient */}
       <SectionWrapper>

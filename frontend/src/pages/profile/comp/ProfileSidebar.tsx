@@ -1,4 +1,5 @@
-import { ClipboardList, Shield, Star } from "lucide-react";
+import { useTranslation } from "react-i18next";
+import { ClipboardList, Shield, Star, NotebookPen } from "lucide-react";
 
 import type { SectionType } from "../../../types/user";
 
@@ -7,32 +8,39 @@ interface ProfileSidebarProps {
   onSelect: (section: SectionType) => void;
 }
 
-const sections: {
-  key: SectionType;
-  label: string;
-  icon: React.ReactNode;
-}[] = [
-  {
-    key: "personal",
-    label: "Personal Data",
-    icon: <ClipboardList size={20} />,
-  },
-  {
-    key: "account",
-    label: "Account",
-    icon: <Shield size={20} className="text-primary" />,
-  },
-  {
-    key: "favorites",
-    label: "My Favorite Recipes",
-    icon: <Star size={20} className="text-warning" />,
-  },
-];
-
 export default function ProfileSidebar({
   currentSection,
   onSelect,
 }: ProfileSidebarProps) {
+  const { t } = useTranslation("pages/profile");
+
+  const sections: {
+    key: SectionType;
+    label: string;
+    icon: React.ReactNode;
+  }[] = [
+    {
+      key: "personal",
+      label: t("sidebar.personal"),
+      icon: <ClipboardList size={20} />,
+    },
+    {
+      key: "account",
+      label: t("sidebar.account"),
+      icon: <Shield size={20} className="text-primary" />,
+    },
+    {
+      key: "favorites",
+      label: t("sidebar.favorites"),
+      icon: <Star size={20} className="text-warning" />,
+    },
+    {
+      key: "notes",
+      label: t("sidebar.notes"),
+      icon: <NotebookPen size={20} className="text-success" />,
+    },
+  ];
+
   return (
     <aside
       className="bg-secondary p-3 border-end d-flex flex-column justify-content-center"

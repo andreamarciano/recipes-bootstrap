@@ -3,6 +3,8 @@ import { useOutletContext } from "react-router-dom";
 
 import type { User, Comment } from "../../../types/user";
 
+import { API_PATHS } from "../../../constants/api";
+
 type ContextType = {
   user: User | null;
 };
@@ -23,9 +25,7 @@ export default function UserComments({ recipeId }: RecipeCommentsProps) {
   useEffect(() => {
     const fetchComments = async () => {
       try {
-        const res = await fetch(
-          `http://localhost:4000/api/comment/${recipeId}`
-        );
+        const res = await fetch(API_PATHS.GET_COMMENTS(recipeId));
         const data = await res.json();
 
         setComments(data);
@@ -43,7 +43,7 @@ export default function UserComments({ recipeId }: RecipeCommentsProps) {
     if (!newComment.trim()) return;
 
     try {
-      const res = await fetch("http://localhost:4000/api/comment", {
+      const res = await fetch(API_PATHS.CREATE_COMMENT, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -66,7 +66,7 @@ export default function UserComments({ recipeId }: RecipeCommentsProps) {
     if (!confirm) return;
 
     try {
-      const res = await fetch(`http://localhost:4000/api/comment/${id}`, {
+      const res = await fetch(API_PATHS.DELETE_COMMENT(id), {
         method: "DELETE",
         headers: {
           Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -85,17 +85,14 @@ export default function UserComments({ recipeId }: RecipeCommentsProps) {
     if (!editingContent.trim() || editingId === null) return;
 
     try {
-      const res = await fetch(
-        `http://localhost:4000/api/comment/${editingId}`,
-        {
-          method: "PUT",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${localStorage.getItem("token")}`,
-          },
-          body: JSON.stringify({ content: editingContent }),
-        }
-      );
+      const res = await fetch(API_PATHS.EDIT_COMMENT(editingId), {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+        body: JSON.stringify({ content: editingContent }),
+      });
 
       const updated = await res.json();
       setComments((prev) =>
@@ -110,15 +107,12 @@ export default function UserComments({ recipeId }: RecipeCommentsProps) {
 
   const toggleLike = async (commentId: number) => {
     try {
-      const res = await fetch(
-        `http://localhost:4000/api/comment/${commentId}/like`,
-        {
-          method: "PATCH",
-          headers: {
-            Authorization: `Bearer ${localStorage.getItem("token")}`,
-          },
-        }
-      );
+      const res = await fetch(API_PATHS.TOGGLE_LIKE(commentId), {
+        method: "PATCH",
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      });
 
       const data = await res.json();
       setComments((prev) =>
@@ -157,6 +151,11 @@ export default function UserComments({ recipeId }: RecipeCommentsProps) {
             Post
           </button>
         </form>
+      )}
+
+      {/* No comments message */}
+      {comments.length === 0 && (
+        <p className="text-muted">No comments yet...</p>
       )}
 
       {/* Comment list */}

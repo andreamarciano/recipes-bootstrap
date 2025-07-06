@@ -6,5 +6,17 @@
   "ingredients": "Ingredients",
   "procedure": "Procedure",
   "notes": "Notes",
-  "tools": "Tools"
+  "tools": "Tools",
+  "userNotes": {
+    "emptyNote": "Cannot save an empty note.",
+    "tooLong": "Note content must be under {{max}} characters.",
+    "characters": "characters",
+    "saveFail": "Failed to save note.",
+    "confirm": "Are you sure you want to delete this note?",
+    "title": "Your Notes",
+    "placeholder": "Write your notes here...",
+    "saving": "Saving...",
+    "save": "Save",
+    "delete": "Delete"
+  }
 }
