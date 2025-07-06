@@ -31,7 +31,13 @@ router.get("/favorites", async (req: Request, res: Response) => {
     include: { recipe: true },
   });
 
-  res.json(favorites.map((fav) => fav.recipe));
+  res.json(
+    favorites.map((fav) => ({
+      id: fav.recipe.id,
+      name: fav.recipe.name,
+      slug: fav.recipe.slug,
+    }))
+  );
 });
 
 // Removes a recipe from favorites
@@ -125,7 +131,17 @@ router.get("/notes/all", async (req: Request, res: Response) => {
     include: { recipe: true },
   });
 
-  res.json(notes);
+  res.json(
+    notes.map((note) => ({
+      id: note.id,
+      content: note.content,
+      recipe: {
+        id: note.recipe.id,
+        name: note.recipe.name,
+        slug: note.recipe.slug,
+      },
+    }))
+  );
 });
 
 // Remove all notes

@@ -13,17 +13,6 @@ export default function NoteSection({ notes, onDeleteAll }: NoteSectionProps) {
   const navigate = useNavigate();
   const { t } = useTranslation("pages/profile");
 
-  const nameToSlug = (name: string) => {
-    const words = name.split(" ");
-    return (
-      words[0].toLowerCase() +
-      words
-        .slice(1)
-        .map((w) => w.charAt(0).toUpperCase() + w.slice(1).toLowerCase())
-        .join("")
-    );
-  };
-
   return (
     <section
       className="bg-secondary rounded-4 p-4 shadow mx-auto mt-5"
@@ -54,9 +43,7 @@ export default function NoteSection({ notes, onDeleteAll }: NoteSectionProps) {
               <p className="small fst-italic text-light mb-0">
                 “{note.content.slice(0, 50)}...” -{" "}
                 <button
-                  onClick={() =>
-                    navigate(`/recipes/${nameToSlug(note.recipe.name)}`)
-                  }
+                  onClick={() => navigate(`/recipes/${note.recipe.slug}`)}
                   className="btn btn-link text-info p-0"
                 >
                   {note.recipe.name}

@@ -11,24 +11,30 @@ router.get("/", async (req: Request, res: Response) => {
 });
 
 // GET one recipe (search bar)
-router.get("/:name", async (req: Request, res: Response) => {
-  const { name } = req.params;
-
-  const recipe = await prisma.recipe.findFirst({
-    where: {
-      name: {
-        equals: name,
-        mode: "insensitive", // case-insensitive search
-      },
-    },
-  });
-
-  if (!recipe) {
-    res.status(404).json({ error: "Recipe not found" });
+router.get("/search", async (req: Request, res: Response) => {
+  const query = req.query.query as string;
+  if (!query || query.trim() === "") {
+    res.status(400).json({ error: "Query is required" });
     return;
   }
 
-  res.json(recipe);
+  if (query.length > 25) {
+    res.status(400).json({ error: "Maximum limit 25 characters." });
+    return;
+  }
+
+  const results = await prisma.recipe.findMany({
+    where: {
+      name: {
+        contains: query,
+        mode: "insensitive",
+      },
+    },
+    select: { name: true, slug: true },
+    take: 10,
+  });
+
+  res.json(results);
 });
 
 export default router;

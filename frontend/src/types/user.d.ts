@@ -7,11 +7,13 @@ export type User = {
 export type Recipe = {
   id: number;
   name: string;
+  slug: string;
 };
 
 export type Favorite = {
   id: number;
   name: string;
+  slug: string;
 };
 
 export type Note = {
@@ -20,6 +22,7 @@ export type Note = {
   recipe: {
     id: number;
     name: string;
+    slug: string;
   };
 };
 

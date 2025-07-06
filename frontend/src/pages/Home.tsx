@@ -22,8 +22,8 @@ export default function Home() {
           <h2 className="mb-4">{t("popular")}</h2>
           <ul className="list-group">
             <li className="list-group-item">
-              <a href="/recipes/tomatoSauce" className="text-decoration-none">
-                {tRecipes("recipes.tomatoSauce")}
+              <a href="/recipes/tomatosauce" className="text-decoration-none">
+                {tRecipes("recipes.tomatosauce")}
               </a>
             </li>
             <li className="list-group-item">
@@ -33,10 +33,10 @@ export default function Home() {
             </li>
             <li className="list-group-item">
               <a
-                href="/recipes/vanillaOrangeCake"
+                href="/recipes/vanillaorangecake"
                 className="text-decoration-none"
               >
-                {tRecipes("recipes.vanillaOrangeCake")}
+                {tRecipes("recipes.vanillaorangecake")}
               </a>
             </li>
           </ul>

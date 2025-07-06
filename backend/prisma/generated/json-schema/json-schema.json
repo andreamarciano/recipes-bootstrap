@@ -55,6 +55,9 @@
         "name": {
           "type": "string"
         },
+        "slug": {
+          "type": "string"
+        },
         "favorite": {
           "type": "array",
           "items": {

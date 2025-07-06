@@ -7,9 +7,9 @@ import Tiramisu from "./Dessert/Tiramisu";
 import VanillaOrangeCake from "./Dessert/VanillaOrangeCake";
 
 const recipesMap: Record<string, React.ReactNode> = {
-  tomatoSauce: <TomatoSauce />,
+  tomatosauce: <TomatoSauce />,
   tiramisu: <Tiramisu />,
-  vanillaOrangeCake: <VanillaOrangeCake />,
+  vanillaorangecake: <VanillaOrangeCake />,
 };
 
 export default function RecipePage() {

@@ -2,7 +2,7 @@
   "title": "Recipes",
   "recipes": {
     "tiramisu": "Tiramisu",
-    "tomatoSauce": "Tomato Sauce",
-    "vanillaOrangeCake": "Vanilla Orange Cake"
+    "tomatosauce": "Tomato Sauce",
+    "vanillaorangecake": "Vanilla Orange Cake"
   }
 }

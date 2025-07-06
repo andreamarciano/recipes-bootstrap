@@ -13,6 +13,7 @@ CREATE TABLE "User" (
 CREATE TABLE "Recipe" (
     "id" SERIAL NOT NULL,
     "name" TEXT NOT NULL,
+    "slug" TEXT NOT NULL,
 
     CONSTRAINT "Recipe_pkey" PRIMARY KEY ("id")
 );
@@ -65,7 +66,7 @@ CREATE UNIQUE INDEX "User_username_key" ON "User"("username");
 CREATE UNIQUE INDEX "User_email_key" ON "User"("email");
 
 -- CreateIndex
-CREATE UNIQUE INDEX "Recipe_name_key" ON "Recipe"("name");
+CREATE UNIQUE INDEX "Recipe_slug_key" ON "Recipe"("slug");
 
 -- CreateIndex
 CREATE UNIQUE INDEX "FavoriteRecipe_userId_recipeId_key" ON "FavoriteRecipe"("userId", "recipeId");
